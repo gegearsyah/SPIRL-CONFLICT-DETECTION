@@ -1,0 +1,42 @@
+{
+  "macro_precision": 0.8125,
+  "macro_recall": 0.95,
+  "macro_f1": 0.8222222222222222,
+  "profile": "Full",
+  "nli_source": "progressive_pipeline",
+  "rows": 200,
+  "per_class": {
+    "semantic_contradiction": {
+      "precision": 1.0,
+      "recall": 0.8,
+      "f1": 0.888888888888889,
+      "tp": 40.0,
+      "fp": 0.0,
+      "fn": 10.0
+    },
+    "dependency_impact": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 50.0,
+      "fp": 0.0,
+      "fn": 0.0
+    },
+    "constraint_violation": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 50.0,
+      "fp": 0.0,
+      "fn": 0.0
+    },
+    "temporal_invalidation": {
+      "precision": 0.25,
+      "recall": 1.0,
+      "f1": 0.4,
+      "tp": 50.0,
+      "fp": 150.0,
+      "fn": 0.0
+    }
+  }
+}

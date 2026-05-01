@@ -1,0 +1,2 @@
+{"timestamp": "2026-04-22T10:27:30Z", "phase": 1, "checkpoint_type": "phase_start", "agent_id": "rdl_phase1_corpus_builder", "status": "in_progress", "prerequisites_checked": true, "notes": "Real Data Lab Phase 1 — corpus verification (fresh run)"}
+{"timestamp": "2026-04-22T10:28:06Z", "phase": 2, "checkpoint_type": "phase_failed", "agent_id": "rdl_phase2_seed_agent", "status": "failed", "error": "Phase 1 phase_complete not found in real_data_lab_checkpoints.jsonl"}

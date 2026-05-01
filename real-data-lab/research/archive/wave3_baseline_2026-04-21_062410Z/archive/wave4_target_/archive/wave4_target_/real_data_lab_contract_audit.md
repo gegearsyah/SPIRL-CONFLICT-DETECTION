@@ -1,0 +1,1 @@
+# Contract Audit\n\nGenerated: 2026-04-16T01:08:31Z\n- Report status: `publishable`\n- Rows scored: `180`\n- Contract-complete rows: `180`\n- Contract-incomplete rows: `0`\n- Semantic trace missing: `0`\n

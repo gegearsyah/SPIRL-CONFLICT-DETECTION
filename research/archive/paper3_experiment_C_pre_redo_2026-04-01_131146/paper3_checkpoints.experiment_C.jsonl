@@ -1,0 +1,1 @@
+{"timestamp": "2026-04-01T01:46:06Z", "phase": 2, "checkpoint_type": "phase_start", "agent_id": "phase2_seed_agent", "status": "in_progress", "prerequisites_checked": true, "phase1_verified": true, "notes": "Starting Phase 2 — conflict injection (MCP only)", "experiment": {"id": "C", "architecture_label": "spirl_mcp_stack_v2"}}

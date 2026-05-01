@@ -1,0 +1,3 @@
+# Optional: OpenAI embeddings for Stage-1 parity with Spirl (text-embedding-3-small, etc.)
+# pip install -r requirements-openai-embed.txt
+openai>=1.40.0

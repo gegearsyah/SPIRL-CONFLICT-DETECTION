@@ -1,0 +1,2 @@
+{"timestamp": "2026-03-31T08:11:37Z", "phase": 1, "checkpoint_type": "workspace_reset", "agent_id": "paper3_phase1_run", "status": "in_progress", "notes": "Fresh Phase 1 after project ID change. Corpus seeded from research/*.skf.json via REST (SKF file import bug workaround). MCP verification recommended."}
+{"timestamp": "2026-03-31T08:11:37Z", "phase": 1, "checkpoint_type": "phase_start", "agent_id": "phase1_corpus_builder", "status": "in_progress", "prerequisites_checked": true, "notes": "Starting Phase 1 — corpus verification (SKF-backed seed)"}

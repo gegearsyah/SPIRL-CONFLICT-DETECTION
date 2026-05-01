@@ -1,0 +1,47 @@
+{
+  "log": "C:\\Users\\GEYE ARDIANSYAH\\Downloads\\Innovation Hub\\SPIRAL-RESEARCH\\Beyond Temporal Contradiction\\research\\paper3_execution_log.experiment_C.jsonl",
+  "nli_source": "progressive_pipeline",
+  "limit": 0,
+  "profiles": [
+    {
+      "profile": "T",
+      "nli_source": "progressive_pipeline",
+      "rows": 200,
+      "macro_precision": 0.0625,
+      "macro_recall": 0.25,
+      "macro_f1": 0.1
+    },
+    {
+      "profile": "T_sem_high",
+      "nli_source": "progressive_pipeline",
+      "rows": 200,
+      "macro_precision": 0.0625,
+      "macro_recall": 0.25,
+      "macro_f1": 0.1
+    },
+    {
+      "profile": "T_sem_retrieval",
+      "nli_source": "progressive_pipeline",
+      "rows": 200,
+      "macro_precision": 0.0625,
+      "macro_recall": 0.25,
+      "macro_f1": 0.1
+    },
+    {
+      "profile": "T_sem_nli",
+      "nli_source": "progressive_pipeline",
+      "rows": 200,
+      "macro_precision": 0.3125,
+      "macro_recall": 0.45,
+      "macro_f1": 0.32222222222222224
+    },
+    {
+      "profile": "Full",
+      "nli_source": "progressive_pipeline",
+      "rows": 200,
+      "macro_precision": 0.8125,
+      "macro_recall": 0.95,
+      "macro_f1": 0.8222222222222222
+    }
+  ]
+}

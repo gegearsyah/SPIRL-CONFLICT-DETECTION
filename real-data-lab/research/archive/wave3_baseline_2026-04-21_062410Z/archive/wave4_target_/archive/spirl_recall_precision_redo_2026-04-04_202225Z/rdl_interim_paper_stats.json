@@ -1,0 +1,23 @@
+{
+  "description": "Frozen counts for paper3_neurips.tex RDL interim table (regenerate after Phase 2 completes).",
+  "log_path": "real_data_lab_execution_log.jsonl",
+  "computed_from_log": true,
+  "semantic_contradiction": {
+    "conflict_injected_success_rows": 9,
+    "async_observed_detected_true": 5,
+    "observed_detection_rate": 0.5555555555555556,
+    "mean_observed_detection_latency_ms_on_detected": 2113.423442840576,
+    "mean_observed_detection_latency_s_on_detected": 2.1134234428405763
+  },
+  "phase2_protocol": {
+    "target_total": 110,
+    "target_per_class": {
+      "semantic_contradiction": 40,
+      "dependency_impact": 20,
+      "constraint_violation": 20,
+      "temporal_invalidation": 20,
+      "ambiguous_case": 10
+    }
+  },
+  "baseline_facts_snapshot": 79
+}

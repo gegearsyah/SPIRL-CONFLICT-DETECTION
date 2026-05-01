@@ -1,0 +1,444 @@
+{
+  "generated_at": "2026-04-13T05:28:35.653405+00:00",
+  "configs": [
+    {
+      "config": "A_base_unidirectional",
+      "description": "Base model, unidirectional NLI, no margin, no SparseCL E-Verify, no predicate gate",
+      "nli_model": "cross-encoder/nli-deberta-v3-base",
+      "bidirectional": false,
+      "margin": 0.0,
+      "reverse_margin_relaxed": 0.0,
+      "sparsecl_everify": false,
+      "sparsecl": false,
+      "predicate_gate": 0.0,
+      "predicate_overlap_mode": "soft",
+      "total": 66,
+      "conflicts": 40,
+      "benign": 26,
+      "TP": 36,
+      "FP": 22,
+      "FN": 4,
+      "TN": 4,
+      "precision": 0.6207,
+      "recall": 0.9,
+      "f1": 0.7347,
+      "mean_latency_ms": 3312.9
+    },
+    {
+      "config": "B_base_bidirectional",
+      "description": "Base model, bidirectional NLI, no margin, no SparseCL E-Verify, no predicate gate",
+      "nli_model": "cross-encoder/nli-deberta-v3-base",
+      "bidirectional": true,
+      "margin": 0.0,
+      "reverse_margin_relaxed": 0.0,
+      "sparsecl_everify": false,
+      "sparsecl": false,
+      "predicate_gate": 0.0,
+      "predicate_overlap_mode": "soft",
+      "total": 66,
+      "conflicts": 40,
+      "benign": 26,
+      "TP": 32,
+      "FP": 16,
+      "FN": 8,
+      "TN": 10,
+      "precision": 0.6667,
+      "recall": 0.8,
+      "f1": 0.7273,
+      "mean_latency_ms": 3698.0
+    },
+    {
+      "config": "C_base_margin",
+      "description": "Base model, bidirectional + margin 0.40 (symmetric), no E-Verify, no predicate gate",
+      "nli_model": "cross-encoder/nli-deberta-v3-base",
+      "bidirectional": true,
+      "margin": 0.4,
+      "reverse_margin_relaxed": 0.0,
+      "sparsecl_everify": false,
+      "sparsecl": false,
+      "predicate_gate": 0.0,
+      "predicate_overlap_mode": "soft",
+      "total": 66,
+      "conflicts": 40,
+      "benign": 26,
+      "TP": 32,
+      "FP": 16,
+      "FN": 8,
+      "TN": 10,
+      "precision": 0.6667,
+      "recall": 0.8,
+      "f1": 0.7273,
+      "mean_latency_ms": 3580.4
+    },
+    {
+      "config": "D_base_predicate",
+      "description": "Base model, bidirectional + margin + soft predicate gate (0.15), no E-Verify",
+      "nli_model": "cross-encoder/nli-deberta-v3-base",
+      "bidirectional": true,
+      "margin": 0.4,
+      "reverse_margin_relaxed": 0.0,
+      "sparsecl_everify": false,
+      "sparsecl": false,
+      "predicate_gate": 0.15,
+      "predicate_overlap_mode": "soft",
+      "total": 66,
+      "conflicts": 40,
+      "benign": 26,
+      "TP": 11,
+      "FP": 0,
+      "FN": 29,
+      "TN": 26,
+      "precision": 1.0,
+      "recall": 0.275,
+      "f1": 0.4314,
+      "mean_latency_ms": 965.9
+    },
+    {
+      "config": "E_base_full",
+      "description": "Base model: bidirectional + margin + soft predicate + SparseCL rerank (E-Verify off, Apr 2026 preset)",
+      "nli_model": "cross-encoder/nli-deberta-v3-base",
+      "bidirectional": true,
+      "margin": 0.4,
+      "reverse_margin_relaxed": 0.0,
+      "sparsecl_everify": false,
+      "sparsecl": false,
+      "predicate_gate": 0.15,
+      "predicate_overlap_mode": "soft",
+      "total": 66,
+      "conflicts": 40,
+      "benign": 26,
+      "TP": 11,
+      "FP": 0,
+      "FN": 29,
+      "TN": 26,
+      "precision": 1.0,
+      "recall": 0.275,
+      "f1": 0.4314,
+      "mean_latency_ms": 909.2
+    },
+    {
+      "config": "F_wanli_full",
+      "description": "WANLI-tuned DeBERTa-v3-large + same stack as E (rerank, no E-Verify)",
+      "nli_model": "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli",
+      "bidirectional": true,
+      "margin": 0.4,
+      "reverse_margin_relaxed": 0.0,
+      "sparsecl_everify": false,
+      "sparsecl": false,
+      "predicate_gate": 0.15,
+      "predicate_overlap_mode": "soft",
+      "total": 66,
+      "conflicts": 40,
+      "benign": 26,
+      "TP": 11,
+      "FP": 0,
+      "FN": 29,
+      "TN": 26,
+      "precision": 1.0,
+      "recall": 0.275,
+      "f1": 0.4314,
+      "mean_latency_ms": 714.2
+    },
+    {
+      "config": "G_wanli_relaxed",
+      "description": "WANLI model + asymmetric reverse margin 0.25 when forward NLI is strong (forward margin stays 0.40)",
+      "nli_model": "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli",
+      "bidirectional": true,
+      "margin": 0.4,
+      "reverse_margin_relaxed": 0.25,
+      "sparsecl_everify": false,
+      "sparsecl": false,
+      "predicate_gate": 0.15,
+      "predicate_overlap_mode": "soft",
+      "total": 66,
+      "conflicts": 40,
+      "benign": 26,
+      "TP": 11,
+      "FP": 0,
+      "FN": 29,
+      "TN": 26,
+      "precision": 1.0,
+      "recall": 0.275,
+      "f1": 0.4314,
+      "mean_latency_ms": 951.8
+    }
+  ],
+  "false_positives": {
+    "A_base_unidirectional": [
+      {
+        "proposal_key": "p-sben-01",
+        "proposal_body": "Entity YAML follows Kubernetes-style envelopes: apiVersion, kind, metadata, and spec sections.",
+        "neighbor_count": 10
+      },
+      {
+        "proposal_key": "p-sben-02",
+        "proposal_body": "TechDocs production docs are built in CI/CD and stored in external object storage (S3/GCS), not generated on every request in the app container.",
+        "neighbor_count": 8
+      },
+      {
+        "proposal_key": "p-sben-04",
+        "proposal_body": "TechDocs static sites for production should be published from the pipeline to external buckets rather than baking generation into the Backstage pod.",
+        "neighbor_count": 10
+      },
+      {
+        "proposal_key": "p-sben-05",
+        "proposal_body": "Software Templates use Cookiecutter and Nunjucks for generating repository scaffolding.",
+        "neighbor_count": 9
+      },
+      {
+        "proposal_key": "p-sben-07",
+        "proposal_body": "API Docs can render OpenAPI v2/v3, AsyncAPI, and GraphQL specifications.",
+        "neighbor_count": 5
+      },
+      {
+        "proposal_key": "p-sben-08",
+        "proposal_body": "Catalog entity validation uses JSON Schema (draft-07) evaluated at ingestion time.",
+        "neighbor_count": 9
+      },
+      {
+        "proposal_key": "p-sben-09",
+        "proposal_body": "IdentityApi remains the supported way to read the current user's identity reference in frontend code.",
+        "neighbor_count": 3
+      },
+      {
+        "proposal_key": "p-sben-10",
+        "proposal_body": "GitLab Cells uses flexible reference architectures with sub-archetypes and overlays instead of one rigid cell blueprint.",
+        "neighbor_count": 10
+      },
+      {
+        "proposal_key": "p-sben-11",
+        "proposal_body": "Org Mover supports migrating organizations into Cells without requiring global downtime.",
+        "neighbor_count": 6
+      },
+      {
+        "proposal_key": "p-sben-12",
+        "proposal_body": "catalogprocessingqueuedelayseconds reflects time from scheduling to processor execution for catalog work.",
+        "neighbor_count": 7
+      },
+      {
+        "proposal_key": "p-sben-14",
+        "proposal_body": "Software components are registered by POSTing a catalog location URL that points at a catalog-info.yaml.",
+        "neighbor_count": 9
+      },
+      {
+        "proposal_key": "p-sben-15",
+        "proposal_body": "GET /create/actions lists installed Scaffolder actions with schemas and examples (e.g. publish:github).",
+        "neighbor_count": 7
+      },
+      {
+        "proposal_key": "p-sben-16",
+        "proposal_body": "Runtime metrics are exposed at /metrics via express-prom-bundle for Prometheus scraping.",
+        "neighbor_count": 10
+      },
+      {
+        "proposal_key": "p-sben-17",
+        "proposal_body": "Catalog reads are governed by RBAC resources like catalog.entity.read through the permissionsRegistry.",
+        "neighbor_count": 5
+      },
+      {
+        "proposal_key": "p-sben-19",
+        "proposal_body": "AnalyticsApi forwards usage events to analytics backends including GA4.",
+        "neighbor_count": 9
+      },
+      {
+        "proposal_key": "p-sben-20",
+        "proposal_body": "Backend HTTP calls use FetchApi so Backstage identity tokens are attached automatically.",
+        "neighbor_count": 10
+      },
+      {
+        "proposal_key": "p-sben-21",
+        "proposal_body": "Scaffolder task logs can be fetched per task with cursor-based continuation.",
+        "neighbor_count": 7
+      },
+      {
+        "proposal_key": "p-sben-22",
+        "proposal_body": "Engineers can list active batched background migrations via the GitLab ChatOps command for batched_background_migrations list.",
+        "neighbor_count": 10
+      },
+      {
+        "proposal_key": "p-sben-23",
+        "proposal_body": "The Backstage backend runs on Node.js with Express-based HTTP services.",
+        "neighbor_count": 10
+      },
+      {
+        "proposal_key": "p-sben-24",
+        "proposal_body": "Redis (with Sentinel where required) backs Sidekiq job queues in GitLab-scale deployments.",
+        "neighbor_count": 10
+      },
+      {
+        "proposal_key": "p-sben-25",
+        "proposal_body": "Scaffolder dry-run mode lets authors validate templates without pushing commits to remotes.",
+        "neighbor_count": 7
+      },
+      {
+        "proposal_key": "p-sben-26",
+        "proposal_body": "Migration CI jobs flag unexpected database growth as a signal of migration risk.",
+        "neighbor_count": 5
+      }
+    ],
+    "B_base_bidirectional": [
+      {
+        "proposal_key": "p-sben-01",
+        "proposal_body": "Entity YAML follows Kubernetes-style envelopes: apiVersion, kind, metadata, and spec sections.",
+        "neighbor_count": 10
+      },
+      {
+        "proposal_key": "p-sben-04",
+        "proposal_body": "TechDocs static sites for production should be published from the pipeline to external buckets rather than baking generation into the Backstage pod.",
+        "neighbor_count": 10
+      },
+      {
+        "proposal_key": "p-sben-05",
+        "proposal_body": "Software Templates use Cookiecutter and Nunjucks for generating repository scaffolding.",
+        "neighbor_count": 9
+      },
+      {
+        "proposal_key": "p-sben-07",
+        "proposal_body": "API Docs can render OpenAPI v2/v3, AsyncAPI, and GraphQL specifications.",
+        "neighbor_count": 5
+      },
+      {
+        "proposal_key": "p-sben-08",
+        "proposal_body": "Catalog entity validation uses JSON Schema (draft-07) evaluated at ingestion time.",
+        "neighbor_count": 9
+      },
+      {
+        "proposal_key": "p-sben-09",
+        "proposal_body": "IdentityApi remains the supported way to read the current user's identity reference in frontend code.",
+        "neighbor_count": 3
+      },
+      {
+        "proposal_key": "p-sben-10",
+        "proposal_body": "GitLab Cells uses flexible reference architectures with sub-archetypes and overlays instead of one rigid cell blueprint.",
+        "neighbor_count": 10
+      },
+      {
+        "proposal_key": "p-sben-12",
+        "proposal_body": "catalogprocessingqueuedelayseconds reflects time from scheduling to processor execution for catalog work.",
+        "neighbor_count": 7
+      },
+      {
+        "proposal_key": "p-sben-14",
+        "proposal_body": "Software components are registered by POSTing a catalog location URL that points at a catalog-info.yaml.",
+        "neighbor_count": 9
+      },
+      {
+        "proposal_key": "p-sben-15",
+        "proposal_body": "GET /create/actions lists installed Scaffolder actions with schemas and examples (e.g. publish:github).",
+        "neighbor_count": 7
+      },
+      {
+        "proposal_key": "p-sben-16",
+        "proposal_body": "Runtime metrics are exposed at /metrics via express-prom-bundle for Prometheus scraping.",
+        "neighbor_count": 10
+      },
+      {
+        "proposal_key": "p-sben-17",
+        "proposal_body": "Catalog reads are governed by RBAC resources like catalog.entity.read through the permissionsRegistry.",
+        "neighbor_count": 5
+      },
+      {
+        "proposal_key": "p-sben-19",
+        "proposal_body": "AnalyticsApi forwards usage events to analytics backends including GA4.",
+        "neighbor_count": 9
+      },
+      {
+        "proposal_key": "p-sben-20",
+        "proposal_body": "Backend HTTP calls use FetchApi so Backstage identity tokens are attached automatically.",
+        "neighbor_count": 10
+      },
+      {
+        "proposal_key": "p-sben-21",
+        "proposal_body": "Scaffolder task logs can be fetched per task with cursor-based continuation.",
+        "neighbor_count": 7
+      },
+      {
+        "proposal_key": "p-sben-24",
+        "proposal_body": "Redis (with Sentinel where required) backs Sidekiq job queues in GitLab-scale deployments.",
+        "neighbor_count": 10
+      }
+    ],
+    "C_base_margin": [
+      {
+        "proposal_key": "p-sben-01",
+        "proposal_body": "Entity YAML follows Kubernetes-style envelopes: apiVersion, kind, metadata, and spec sections.",
+        "neighbor_count": 10
+      },
+      {
+        "proposal_key": "p-sben-04",
+        "proposal_body": "TechDocs static sites for production should be published from the pipeline to external buckets rather than baking generation into the Backstage pod.",
+        "neighbor_count": 10
+      },
+      {
+        "proposal_key": "p-sben-05",
+        "proposal_body": "Software Templates use Cookiecutter and Nunjucks for generating repository scaffolding.",
+        "neighbor_count": 9
+      },
+      {
+        "proposal_key": "p-sben-07",
+        "proposal_body": "API Docs can render OpenAPI v2/v3, AsyncAPI, and GraphQL specifications.",
+        "neighbor_count": 5
+      },
+      {
+        "proposal_key": "p-sben-08",
+        "proposal_body": "Catalog entity validation uses JSON Schema (draft-07) evaluated at ingestion time.",
+        "neighbor_count": 9
+      },
+      {
+        "proposal_key": "p-sben-09",
+        "proposal_body": "IdentityApi remains the supported way to read the current user's identity reference in frontend code.",
+        "neighbor_count": 3
+      },
+      {
+        "proposal_key": "p-sben-10",
+        "proposal_body": "GitLab Cells uses flexible reference architectures with sub-archetypes and overlays instead of one rigid cell blueprint.",
+        "neighbor_count": 10
+      },
+      {
+        "proposal_key": "p-sben-12",
+        "proposal_body": "catalogprocessingqueuedelayseconds reflects time from scheduling to processor execution for catalog work.",
+        "neighbor_count": 7
+      },
+      {
+        "proposal_key": "p-sben-14",
+        "proposal_body": "Software components are registered by POSTing a catalog location URL that points at a catalog-info.yaml.",
+        "neighbor_count": 9
+      },
+      {
+        "proposal_key": "p-sben-15",
+        "proposal_body": "GET /create/actions lists installed Scaffolder actions with schemas and examples (e.g. publish:github).",
+        "neighbor_count": 7
+      },
+      {
+        "proposal_key": "p-sben-16",
+        "proposal_body": "Runtime metrics are exposed at /metrics via express-prom-bundle for Prometheus scraping.",
+        "neighbor_count": 10
+      },
+      {
+        "proposal_key": "p-sben-17",
+        "proposal_body": "Catalog reads are governed by RBAC resources like catalog.entity.read through the permissionsRegistry.",
+        "neighbor_count": 5
+      },
+      {
+        "proposal_key": "p-sben-19",
+        "proposal_body": "AnalyticsApi forwards usage events to analytics backends including GA4.",
+        "neighbor_count": 9
+      },
+      {
+        "proposal_key": "p-sben-20",
+        "proposal_body": "Backend HTTP calls use FetchApi so Backstage identity tokens are attached automatically.",
+        "neighbor_count": 10
+      },
+      {
+        "proposal_key": "p-sben-21",
+        "proposal_body": "Scaffolder task logs can be fetched per task with cursor-based continuation.",
+        "neighbor_count": 7
+      },
+      {
+        "proposal_key": "p-sben-24",
+        "proposal_body": "Redis (with Sentinel where required) backs Sidekiq job queues in GitLab-scale deployments.",
+        "neighbor_count": 10
+      }
+    ]
+  }
+}

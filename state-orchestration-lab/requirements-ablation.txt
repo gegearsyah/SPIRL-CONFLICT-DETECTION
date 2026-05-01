@@ -1,0 +1,5 @@
+# Ablation harness requirements (extends spiral-stages)
+# Install from state-orchestration-lab/:
+#   pip install -r requirements-spiral-stages.txt -r requirements-ablation.txt
+python-dotenv>=1.0.0
+tabulate>=0.9.0

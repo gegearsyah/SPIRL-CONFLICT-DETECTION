@@ -1,0 +1,1413 @@
+{
+  "skf_version": "1.2",
+  "exported_at": "2026-04-01T00:00:26Z",
+  "source": {
+    "agent": "paper3-basis-to-seed",
+    "basis_exported_at": "2026-03-31T23:57:32Z",
+    "basis_corpus_slug": "paper3_saas",
+    "paper3_experiment_id": "C"
+  },
+  "project": {
+    "name": "Research — SaaS Analytics Platform",
+    "description": "Synthetic multi-tenant analytics product base corpus for Paper 3 (from basis export).",
+    "slug": "research-saas-analytics",
+    "tags": [
+      "research",
+      "paper3",
+      "saas"
+    ]
+  },
+  "facts": [
+    {
+      "key": "api.v1.alerts.create",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /v1/alerts — create alert rule with channels.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.v1.audit.list",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /v1/audit — paginated audit events with filters.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.v1.auth.session",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /v1/auth/session/refresh — rotate refresh token.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.v1.billing.usage",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /v1/billing/usage — current period usage vs plan limits.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.v1.dashboards.create",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /v1/dashboards — create dashboard from template or blank.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.v1.dashboards.list",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /v1/dashboards — list dashboards for workspace.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.v1.datasets.list",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /v1/datasets — curated datasets available to workspace.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.v1.datasets.preview",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /v1/datasets/{id}/preview — sample rows and schema.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.v1.exports.status",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /v1/exports/{job_id} — status and download URL when ready.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.v1.flags.evaluate",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /v1/flags/evaluate — batch flag evaluation for user context.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.v1.health",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /v1/health — liveness for load balancers.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.v1.integrations.slack",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /v1/integrations/slack/oauth — connect Slack workspace.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.v1.metrics.export",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /v1/metrics/export — async export job; poll job status.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.v1.metrics.query",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /v1/metrics/query — query time-series with filters and granularity.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.v1.reports.schedule",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /v1/reports/schedule — cron expression and delivery list.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.v1.sql.run",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /v1/sql/run — read-only query with row and time limits.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.v1.tenants.settings",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "PATCH /v1/tenant/settings — workspace name, branding, retention.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.v1.users.invite",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /v1/users/invite — email invite with role assignment.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.v1.version",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /v1/version — build sha and supported API versions.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.v1.webhooks.register",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /v1/webhooks — register endpoint URL and event types.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.access_review",
+      "layer": "product",
+      "category": "constraint",
+      "value": "Quarterly access review for admin roles; auto-revoke inactive 90d.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.budget_infra",
+      "layer": "product",
+      "category": "constraint",
+      "value": "Monthly infra cap USD 18k until Series A; require approval to exceed.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.data_residency",
+      "layer": "product",
+      "category": "constraint",
+      "value": "EU tenants data in eu-central-1; no replication outside region.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.performance_api",
+      "layer": "product",
+      "category": "constraint",
+      "value": "p95 API latency under 300ms for standard queries at P50 load.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.scope_integrations",
+      "layer": "product",
+      "category": "constraint",
+      "value": "No Salesforce integration in v1; HubSpot read-only optional.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.security_headers",
+      "layer": "product",
+      "category": "constraint",
+      "value": "HSTS, CSP, and X-Frame-Options required on all web routes.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.team_size",
+      "layer": "product",
+      "category": "constraint",
+      "value": "Engineering team capped at 12 FTE for 2026; contractor budget 20%.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.third_party",
+      "layer": "product",
+      "category": "constraint",
+      "value": "New vendor review required; no sub-processors without DPA.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.timeline_mvp",
+      "layer": "product",
+      "category": "constraint",
+      "value": "MVP GA target 2026-06-30; beta starts 2026-04-01.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.uptime",
+      "layer": "product",
+      "category": "constraint",
+      "value": "99.9% API SLO; planned maintenance max 4h per quarter with notice.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.api_versioning",
+      "layer": "product",
+      "category": "decision",
+      "value": "URL path versioning /v1, /v2; deprecation headers and 6-month sunset.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.billing_meters",
+      "layer": "product",
+      "category": "decision",
+      "value": "Bill on active seats + monthly tracked events over included quota.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.compliance",
+      "layer": "product",
+      "category": "decision",
+      "value": "SOC2 Type I in progress; GDPR DPA template; HIPAA not targeted.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.data_retention",
+      "layer": "product",
+      "category": "decision",
+      "value": "Hot 90d in OLTP; cold archive to R2 with 7-year option for enterprise.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.export_format",
+      "layer": "product",
+      "category": "decision",
+      "value": "Default CSV and Parquet; Excel only on Enterprise plan.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.feature_flags",
+      "layer": "product",
+      "category": "decision",
+      "value": "PostHog flags; kill switches for risky releases; no client-side secrets.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.localization",
+      "layer": "product",
+      "category": "decision",
+      "value": "EN first; i18n framework ready; DE and FR by Q3.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.mobile",
+      "layer": "product",
+      "category": "decision",
+      "value": "Responsive web only for 2026; native apps out of scope.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.multi_tenancy",
+      "layer": "product",
+      "category": "decision",
+      "value": "Row-level tenancy via tenant_id on all tenant-scoped tables; no schema-per-tenant.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.pii_handling",
+      "layer": "product",
+      "category": "decision",
+      "value": "Classify columns; mask in logs; DSR export and delete workflows.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.realtime",
+      "layer": "product",
+      "category": "decision",
+      "value": "SSE for dashboard tiles; WebSockets only for collaborative editing (future).",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.sla",
+      "layer": "product",
+      "category": "decision",
+      "value": "99.9% API monthly; status page; incident comms within 30 minutes.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "deployment.api",
+      "layer": "product",
+      "category": "deployment",
+      "value": "Fly.io machines in ord and fra; autoscale on CPU and request rate.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "deployment.feature_envs",
+      "layer": "product",
+      "category": "deployment",
+      "value": "Ephemeral env per PR with seeded demo data.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "deployment.migrations",
+      "layer": "product",
+      "category": "deployment",
+      "value": "Supabase migration pipeline; expand/contract for zero-downtime.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "deployment.web",
+      "layer": "product",
+      "category": "deployment",
+      "value": "Vercel production + preview; protected main branch; canary 10% on API.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.alerts",
+      "layer": "product",
+      "category": "feature",
+      "value": "Threshold and anomaly alerts with Slack and email channels.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.api_public",
+      "layer": "product",
+      "category": "feature",
+      "value": "Public REST API with scoped API keys and per-key rate limits.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.audit_log",
+      "layer": "product",
+      "category": "feature",
+      "value": "Immutable audit trail for admin actions and data exports.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.billing_portal",
+      "layer": "product",
+      "category": "feature",
+      "value": "Self-serve plan changes, invoices, and payment methods via Stripe portal.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.changelog",
+      "layer": "product",
+      "category": "feature",
+      "value": "In-app changelog and opt-in beta features per workspace.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.dashboard",
+      "layer": "product",
+      "category": "feature",
+      "value": "Configurable analytics dashboard with saved views and sharing.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.embed",
+      "layer": "product",
+      "category": "feature",
+      "value": "Signed embed tokens for customer-facing charts in partner portals.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.goals",
+      "layer": "product",
+      "category": "feature",
+      "value": "OKR-style goals linked to metrics and weekly check-ins.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.import_wizard",
+      "layer": "product",
+      "category": "feature",
+      "value": "CSV and warehouse connectors with column mapping and validation.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.mobile_pwa",
+      "layer": "product",
+      "category": "feature",
+      "value": "Installable PWA with offline cached list views.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.rbac",
+      "layer": "product",
+      "category": "feature",
+      "value": "Roles: Owner, Admin, Analyst, Viewer; custom roles on Enterprise.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.reports",
+      "layer": "product",
+      "category": "feature",
+      "value": "Scheduled PDF and email reports with filters and drill-down links.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.sandbox",
+      "layer": "product",
+      "category": "feature",
+      "value": "Isolated sandbox project for API integration testing.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.search",
+      "layer": "product",
+      "category": "feature",
+      "value": "Global search across dashboards, reports, and documentation.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.sql_console",
+      "layer": "product",
+      "category": "feature",
+      "value": "Read-only SQL against curated datasets for power users.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.sso",
+      "layer": "product",
+      "category": "feature",
+      "value": "SAML SSO with IdP metadata upload and JIT provisioning.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.teams",
+      "layer": "product",
+      "category": "feature",
+      "value": "Workspace teams with inherited permissions and shared assets.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.webhooks",
+      "layer": "product",
+      "category": "feature",
+      "value": "Outbound webhooks with signing secret, retries, and dead-letter queue.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "migration.auth_cutover",
+      "layer": "product",
+      "category": "migration",
+      "value": "Dual-run JWT validation during auth provider migration window.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "migration.legacy_import",
+      "layer": "product",
+      "category": "migration",
+      "value": "One-time import tool from competitor CSV exports; idempotent keys.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "monitoring.error_budget",
+      "layer": "product",
+      "category": "monitoring",
+      "value": "Monthly error budget policy; freeze features if exhausted.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "monitoring.oncall",
+      "layer": "product",
+      "category": "monitoring",
+      "value": "PagerDuty rotation; runbooks in Notion; blameless postmortems.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "monitoring.slo_dashboard",
+      "layer": "product",
+      "category": "monitoring",
+      "value": "Grafana dashboard for golden signals and burn rates.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.analytics_product",
+      "layer": "product",
+      "category": "stack",
+      "value": "PostHog self-hosted EU for product analytics and feature flags.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.auth",
+      "layer": "product",
+      "category": "stack",
+      "value": "Supabase Auth with JWT, optional SSO via SAML for enterprise tenants.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.backend",
+      "layer": "product",
+      "category": "stack",
+      "value": "Node.js 22 LTS, Fastify 5, Zod validation, Pino logging.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.cache",
+      "layer": "product",
+      "category": "stack",
+      "value": "Redis 7 for session cache, rate-limit counters, and job dedupe keys.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.ci_cd",
+      "layer": "product",
+      "category": "stack",
+      "value": "GitHub Actions: lint, test, typecheck, preview deploys, production promote.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.database",
+      "layer": "product",
+      "category": "stack",
+      "value": "PostgreSQL 16 on Supabase, pgvector for semantic search on help docs.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.email",
+      "layer": "product",
+      "category": "stack",
+      "value": "Resend for transactional; Postmark backup for critical billing emails.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.frontend",
+      "layer": "product",
+      "category": "stack",
+      "value": "Next.js 15 App Router, React 19, TypeScript strict, Tailwind CSS 4, TanStack Query.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.hosting",
+      "layer": "product",
+      "category": "stack",
+      "value": "Vercel for web, Fly.io for API workers, Cloudflare for CDN and WAF.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.observability",
+      "layer": "product",
+      "category": "stack",
+      "value": "OpenTelemetry traces to Honeycomb; metrics in Grafana Cloud.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.payments",
+      "layer": "product",
+      "category": "stack",
+      "value": "Stripe Billing: subscriptions, usage meters, customer portal.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.queue",
+      "layer": "product",
+      "category": "stack",
+      "value": "BullMQ on Redis for async exports, webhook delivery, and digest emails.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.search",
+      "layer": "product",
+      "category": "stack",
+      "value": "Algolia for in-app doc search; Postgres full-text for internal admin.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.secrets",
+      "layer": "product",
+      "category": "stack",
+      "value": "Doppler for env sync; no secrets in repo; rotation quarterly.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.storage",
+      "layer": "product",
+      "category": "stack",
+      "value": "S3-compatible R2 for user-uploaded CSV previews and export archives.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "test.accessibility",
+      "layer": "product",
+      "category": "test",
+      "value": "axe-core in CI on main flows; WCAG 2.1 AA target.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "test.contract",
+      "layer": "product",
+      "category": "test",
+      "value": "Pact consumer tests for public API; provider verification in CI.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "test.e2e",
+      "layer": "product",
+      "category": "test",
+      "value": "Playwright smoke on staging for login, dashboard load, export flow.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "test.load",
+      "layer": "product",
+      "category": "test",
+      "value": "k6 scripts for read-heavy paths before major marketing launches.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "test.security",
+      "layer": "product",
+      "category": "test",
+      "value": "Semgrep + npm audit in CI; annual pentest.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "test.unit",
+      "layer": "product",
+      "category": "test",
+      "value": "Vitest for frontend and backend units; 80% line coverage gate on critical paths.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    }
+  ],
+  "edges": [
+    {
+      "from": "api.v1.alerts.create",
+      "to": "stack.analytics_product",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.v1.audit.list",
+      "to": "stack.auth",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.v1.auth.session",
+      "to": "stack.backend",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.v1.billing.usage",
+      "to": "stack.cache",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.v1.dashboards.create",
+      "to": "stack.ci_cd",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.v1.dashboards.list",
+      "to": "stack.database",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.v1.datasets.list",
+      "to": "stack.email",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.v1.datasets.preview",
+      "to": "stack.frontend",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.v1.exports.status",
+      "to": "stack.hosting",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.v1.flags.evaluate",
+      "to": "stack.observability",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.v1.health",
+      "to": "stack.payments",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.v1.integrations.slack",
+      "to": "stack.queue",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.v1.metrics.export",
+      "to": "stack.search",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.v1.metrics.query",
+      "to": "stack.secrets",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.v1.reports.schedule",
+      "to": "stack.storage",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.v1.sql.run",
+      "to": "stack.analytics_product",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.v1.tenants.settings",
+      "to": "stack.auth",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.v1.users.invite",
+      "to": "stack.backend",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.v1.version",
+      "to": "stack.cache",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.v1.webhooks.register",
+      "to": "stack.ci_cd",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "constraint.access_review",
+      "to": "feature.alerts",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.budget_infra",
+      "to": "feature.api_public",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.data_residency",
+      "to": "feature.audit_log",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.performance_api",
+      "to": "feature.billing_portal",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.scope_integrations",
+      "to": "feature.changelog",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.security_headers",
+      "to": "feature.dashboard",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.team_size",
+      "to": "feature.embed",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.third_party",
+      "to": "feature.goals",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.timeline_mvp",
+      "to": "feature.import_wizard",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.uptime",
+      "to": "feature.mobile_pwa",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "decision.api_versioning",
+      "to": "stack.database",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.billing_meters",
+      "to": "stack.email",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.compliance",
+      "to": "stack.frontend",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.data_retention",
+      "to": "stack.hosting",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.export_format",
+      "to": "stack.observability",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.feature_flags",
+      "to": "stack.payments",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.localization",
+      "to": "stack.queue",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.mobile",
+      "to": "stack.search",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.multi_tenancy",
+      "to": "stack.secrets",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.pii_handling",
+      "to": "stack.storage",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.realtime",
+      "to": "stack.analytics_product",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.sla",
+      "to": "stack.auth",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "deployment.api",
+      "to": "stack.backend",
+      "type": "deployed_with",
+      "description": ""
+    },
+    {
+      "from": "deployment.feature_envs",
+      "to": "stack.cache",
+      "type": "deployed_with",
+      "description": ""
+    },
+    {
+      "from": "deployment.migrations",
+      "to": "stack.ci_cd",
+      "type": "deployed_with",
+      "description": ""
+    },
+    {
+      "from": "deployment.web",
+      "to": "stack.database",
+      "type": "deployed_with",
+      "description": ""
+    },
+    {
+      "from": "feature.alerts",
+      "to": "test.accessibility",
+      "type": "tested_by",
+      "description": ""
+    },
+    {
+      "from": "feature.api_public",
+      "to": "test.contract",
+      "type": "tested_by",
+      "description": ""
+    },
+    {
+      "from": "feature.audit_log",
+      "to": "test.e2e",
+      "type": "tested_by",
+      "description": ""
+    },
+    {
+      "from": "feature.billing_portal",
+      "to": "test.load",
+      "type": "tested_by",
+      "description": ""
+    },
+    {
+      "from": "feature.changelog",
+      "to": "test.security",
+      "type": "tested_by",
+      "description": ""
+    },
+    {
+      "from": "feature.dashboard",
+      "to": "test.unit",
+      "type": "tested_by",
+      "description": ""
+    },
+    {
+      "from": "feature.rbac",
+      "to": "decision.api_versioning",
+      "type": "implements",
+      "description": ""
+    },
+    {
+      "from": "feature.reports",
+      "to": "decision.billing_meters",
+      "type": "implements",
+      "description": ""
+    },
+    {
+      "from": "feature.sandbox",
+      "to": "decision.compliance",
+      "type": "implements",
+      "description": ""
+    },
+    {
+      "from": "feature.search",
+      "to": "decision.data_retention",
+      "type": "implements",
+      "description": ""
+    },
+    {
+      "from": "feature.sql_console",
+      "to": "decision.export_format",
+      "type": "implements",
+      "description": ""
+    },
+    {
+      "from": "feature.sso",
+      "to": "decision.feature_flags",
+      "type": "implements",
+      "description": ""
+    },
+    {
+      "from": "feature.teams",
+      "to": "decision.localization",
+      "type": "implements",
+      "description": ""
+    },
+    {
+      "from": "feature.webhooks",
+      "to": "decision.mobile",
+      "type": "implements",
+      "description": ""
+    },
+    {
+      "from": "migration.auth_cutover",
+      "to": "stack.email",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "migration.legacy_import",
+      "to": "stack.frontend",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "monitoring.error_budget",
+      "to": "stack.hosting",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "monitoring.oncall",
+      "to": "stack.observability",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "monitoring.slo_dashboard",
+      "to": "stack.payments",
+      "type": "related_to",
+      "description": ""
+    }
+  ],
+  "episodes": [
+    {
+      "type": "extraction",
+      "actor": "paper3-basis-to-seed",
+      "content": "Paper 3 saas seed generated from paper3_basis.skf.json",
+      "timestamp": "2026-04-01T00:00:26Z"
+    }
+  ],
+  "rules": []
+}

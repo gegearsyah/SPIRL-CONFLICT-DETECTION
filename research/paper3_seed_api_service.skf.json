@@ -1,0 +1,1475 @@
+{
+  "skf_version": "1.2",
+  "exported_at": "2026-04-01T00:00:26Z",
+  "source": {
+    "agent": "paper3-basis-to-seed",
+    "basis_exported_at": "2026-03-31T23:57:32Z",
+    "basis_corpus_slug": "paper3_api_service",
+    "paper3_experiment_id": "C"
+  },
+  "project": {
+    "name": "Research — Core API Service",
+    "description": "Synthetic API gateway + microservices base corpus for Paper 3 (from basis export).",
+    "slug": "research-api-service",
+    "tags": [
+      "research",
+      "paper3",
+      "api"
+    ]
+  },
+  "facts": [
+    {
+      "key": "api.admin.clients.list",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /admin/v1/clients — list OAuth clients (admin only).",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.admin.clients.rotate",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /admin/v1/clients/{id}/rotate-secret — rotate client secret.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.edge.health",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /healthz — liveness; no auth.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.edge.ready",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /readyz — checks DB, Redis, NATS connectivity.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.internal.accounts.create",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /internal/v1/accounts — provision tenant; idempotent.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.internal.tokens.issue",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /internal/v1/tokens — issue scoped token for worker.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.metrics.prometheus",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /metrics — Prometheus scrape endpoint internal only.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.oas.spec",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /v1/openapi.json — machine-readable spec.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.oas.ui",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /docs — Swagger UI behind auth in non-prod.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.public.v1.batch.status",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /v1/batch/{job_id} — job status and result URLs.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.public.v1.batch.submit",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /v1/batch — submit batch job; returns job_id.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.public.v1.bulk.head",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "HEAD /v1/resources — count-only for sync clients.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.public.v1.metrics_summary",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /v1/metrics/summary — weekly usage rollup for dashboards.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.public.v1.quota",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /v1/quota — remaining quota for caller.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.public.v1.resources",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /v1/resources — list resources for caller scope.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.public.v1.resources.delete",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "DELETE /v1/resources/{id} — soft delete; tombstone header.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.public.v1.resources.id",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /v1/resources/{id} — fetch single resource.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.public.v1.resources.patch",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "PATCH /v1/resources/{id} — partial update with ETag.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.public.v1.resources.post",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /v1/resources — create resource; returns 201 + Location.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.public.v1.usage",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /v1/usage/events — ingest usage events (batched).",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.webhooks.deliveries",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /v1/webhooks/deliveries — list recent delivery attempts.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.webhooks.retry",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /v1/webhooks/deliveries/{id}/retry — manual retry.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.api_deprecation",
+      "layer": "product",
+      "category": "constraint",
+      "value": "No more than 3 active deprecated paths per major version.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.backup_rpo",
+      "layer": "product",
+      "category": "constraint",
+      "value": "RPO 15 minutes for primary DB; daily full backup retained 30d.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.concurrent_requests",
+      "layer": "product",
+      "category": "constraint",
+      "value": "Default 1000 RPS per client; burst 2000.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.data_classification",
+      "layer": "product",
+      "category": "constraint",
+      "value": "No secret material in query strings or access logs.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.dependency_updates",
+      "layer": "product",
+      "category": "constraint",
+      "value": "Critical CVE patch within 7 days; others monthly.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.encryption_at_rest",
+      "layer": "product",
+      "category": "constraint",
+      "value": "All disks and object storage encrypted; CMK optional enterprise.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.latency_budget",
+      "layer": "product",
+      "category": "constraint",
+      "value": "p99 internal RPC under 50ms between zone-local services.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.log_retention",
+      "layer": "product",
+      "category": "constraint",
+      "value": "Access logs 400d; debug logs 14d in non-prod only.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.oncall_api",
+      "layer": "product",
+      "category": "constraint",
+      "value": "Critical API team 24/7 during launch month only.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.payload_max",
+      "layer": "product",
+      "category": "constraint",
+      "value": "Max request body 10MB unless signed multipart upload.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.region_failover",
+      "layer": "product",
+      "category": "constraint",
+      "value": "Runbook for regional failover; RTO target 4 hours.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.synthetic_staging",
+      "layer": "product",
+      "category": "constraint",
+      "value": "Staging uses synthetic fixtures only; no production PII.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.auth",
+      "layer": "product",
+      "category": "decision",
+      "value": "OAuth2 client credentials for M2M; JWT for user delegation with audience checks.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.breaking_changes",
+      "layer": "product",
+      "category": "decision",
+      "value": "Deprecation calendar in changelog; min 90d notice for removals.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.cors",
+      "layer": "product",
+      "category": "decision",
+      "value": "Strict allowlist of origins per client; no wildcard in production.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.error_format",
+      "layer": "product",
+      "category": "decision",
+      "value": "RFC 7807 problem+json with stable type URIs and correlation id.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.idempotency",
+      "layer": "product",
+      "category": "decision",
+      "value": "All mutating endpoints accept Idempotency-Key; 24h dedupe window.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.pagination",
+      "layer": "product",
+      "category": "decision",
+      "value": "Cursor-based pagination for large collections; max page size 100.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.rate_limits",
+      "layer": "product",
+      "category": "decision",
+      "value": "Per client_id and per IP; burst + sustained token bucket.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.synchronous_timeout",
+      "layer": "product",
+      "category": "decision",
+      "value": "Hard 30s gateway timeout; async pattern for long jobs.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.versioning",
+      "layer": "product",
+      "category": "decision",
+      "value": "Header Accept-Version optional; path /v1 default for 12 months.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.webhook_signing",
+      "layer": "product",
+      "category": "decision",
+      "value": "HMAC-SHA256 on webhook bodies; clock skew window 5 minutes.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "deployment.blue_green",
+      "layer": "product",
+      "category": "deployment",
+      "value": "Blue/green for gateway config; gradual pod rollouts for services.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "deployment.canary_analysis",
+      "layer": "product",
+      "category": "deployment",
+      "value": "Automated metric comparison before full promotion.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "deployment.cost_cap",
+      "layer": "product",
+      "category": "deployment",
+      "value": "Monthly GKE cost alert at 85% of budget.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "deployment.migrations_job",
+      "layer": "product",
+      "category": "deployment",
+      "value": "Kubernetes Job for goose migrations with advisory locks.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "deployment.network_policy",
+      "layer": "product",
+      "category": "deployment",
+      "value": "Default deny K8s network policy; explicit allow per namespace.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.admin_audit",
+      "layer": "product",
+      "category": "feature",
+      "value": "Admin API for key lifecycle and security event replay.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.api_keys",
+      "layer": "product",
+      "category": "feature",
+      "value": "Scoped API keys with rotation, last-used timestamp, and parent client.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.batch_jobs",
+      "layer": "product",
+      "category": "feature",
+      "value": "Batch job API with chunked uploads and completion webhooks.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.circuit_breaker",
+      "layer": "product",
+      "category": "feature",
+      "value": "Per-dependency circuit breakers with half-open probes.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.client_sdks",
+      "layer": "product",
+      "category": "feature",
+      "value": "Generated TypeScript and Go SDKs from OpenAPI with semver.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.dead_letter",
+      "layer": "product",
+      "category": "feature",
+      "value": "DLQ topic for failed consumer messages with replay tooling.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.graceful_degradation",
+      "layer": "product",
+      "category": "feature",
+      "value": "Read path fallback to cache when primary DB unhealthy.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.health_aggregated",
+      "layer": "product",
+      "category": "feature",
+      "value": "Aggregated health checks across dependencies for synthetic probes.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.ip_allowlist",
+      "layer": "product",
+      "category": "feature",
+      "value": "Optional IP allowlists per API client for enterprise.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.openapi_diff",
+      "layer": "product",
+      "category": "feature",
+      "value": "Breaking change detection between OpenAPI versions in CI.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.quota_service",
+      "layer": "product",
+      "category": "feature",
+      "value": "Central quota service enforcing plan limits across edge and core.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.request_signing",
+      "layer": "product",
+      "category": "feature",
+      "value": "Optional HMAC request signing for high-security partners.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.request_validation",
+      "layer": "product",
+      "category": "feature",
+      "value": "JSON Schema validation at gateway and service boundary.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.retry_policy",
+      "layer": "product",
+      "category": "feature",
+      "value": "Exponential backoff with jitter; max 5 retries for 5xx.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.schema_registry",
+      "layer": "product",
+      "category": "feature",
+      "value": "AsyncAPI and OpenAPI registry with diff and compatibility checks.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.shadow_mode",
+      "layer": "product",
+      "category": "feature",
+      "value": "Shadow traffic to new versions without affecting billing.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.traffic_split",
+      "layer": "product",
+      "category": "feature",
+      "value": "Weighted routing between service versions for canary.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.usage_metering",
+      "layer": "product",
+      "category": "feature",
+      "value": "Emitted usage events to billing pipeline with at-least-once delivery.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "migration.dual_write",
+      "layer": "product",
+      "category": "migration",
+      "value": "Dual-write window max 14 days during datastore migration.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "migration.monolith_split",
+      "layer": "product",
+      "category": "migration",
+      "value": "Strangler pattern: extract quota and auth to dedicated services.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "monitoring.alert_routing",
+      "layer": "product",
+      "category": "monitoring",
+      "value": "Severity-based routing to Slack vs PagerDuty.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "monitoring.slo_api",
+      "layer": "product",
+      "category": "monitoring",
+      "value": "99.95% availability SLO for public read endpoints.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "monitoring.synthetic",
+      "layer": "product",
+      "category": "monitoring",
+      "value": "Synthetic checks every 60s from three regions.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "monitoring.trace_sampling",
+      "layer": "product",
+      "category": "monitoring",
+      "value": "Tail-based sampling for error traces; 1% baseline happy path.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.cache_api",
+      "layer": "product",
+      "category": "stack",
+      "value": "Redis Cluster for idempotency keys and response caching.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.db",
+      "layer": "product",
+      "category": "stack",
+      "value": "PostgreSQL 16 primary; read replicas for reporting aggregates.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.deploy",
+      "layer": "product",
+      "category": "stack",
+      "value": "Kubernetes on GKE Autopilot; Helm charts per service.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.docs_api",
+      "layer": "product",
+      "category": "stack",
+      "value": "OpenAPI 3.1 generated from code; Redoc published per environment.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.gateway",
+      "layer": "product",
+      "category": "stack",
+      "value": "Kong Gateway for auth plugins, rate limiting, and request logging.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.iac",
+      "layer": "product",
+      "category": "stack",
+      "value": "Terraform for clusters, DNS, and shared infra modules.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.logging_structured",
+      "layer": "product",
+      "category": "stack",
+      "value": "JSON logs with trace_id, span_id, tenant_id, client_id on every line.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.messaging",
+      "layer": "product",
+      "category": "stack",
+      "value": "NATS JetStream for domain events and outbox pattern.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.metrics_cardinality",
+      "layer": "product",
+      "category": "stack",
+      "value": "Cardinality-limited custom metrics; high-card labels blocked at ingest.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.runtime",
+      "layer": "product",
+      "category": "stack",
+      "value": "Go 1.23 services; chi router; protobuf for internal RPC.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.secrets_k8s",
+      "layer": "product",
+      "category": "stack",
+      "value": "External Secrets Operator syncing from GCP Secret Manager.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.tls",
+      "layer": "product",
+      "category": "stack",
+      "value": "Automatic cert rotation via cert-manager; TLS 1.3 only.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.tracing",
+      "layer": "product",
+      "category": "stack",
+      "value": "OTel SDK; Tempo backend; trace_id in all structured logs.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.waf",
+      "layer": "product",
+      "category": "stack",
+      "value": "Cloud Armor in front of ingress; geo blocking optional.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "test.chaos",
+      "layer": "product",
+      "category": "test",
+      "value": "Quarterly game day: kill random pod; verify recovery.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "test.contract_public",
+      "layer": "product",
+      "category": "test",
+      "value": "Contract tests against OpenAPI spec for top 20 routes.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "test.fuzz_json",
+      "layer": "product",
+      "category": "test",
+      "value": "Fuzzing for public JSON parsers with libFuzzer harness.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "test.integration",
+      "layer": "product",
+      "category": "test",
+      "value": "Testcontainers for Postgres and Redis in integration suite.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "test.load_gateway",
+      "layer": "product",
+      "category": "test",
+      "value": "Vegeta sustained load before Black Friday.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "test.mutation_api",
+      "layer": "product",
+      "category": "test",
+      "value": "Mutation testing on critical auth and billing handlers quarterly.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "test.tls_pinning",
+      "layer": "product",
+      "category": "test",
+      "value": "Integration tests verify cert chain for public endpoints.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    }
+  ],
+  "edges": [
+    {
+      "from": "api.admin.clients.list",
+      "to": "stack.cache_api",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.admin.clients.rotate",
+      "to": "stack.db",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.edge.health",
+      "to": "stack.deploy",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.edge.ready",
+      "to": "stack.docs_api",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.internal.accounts.create",
+      "to": "stack.gateway",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.internal.tokens.issue",
+      "to": "stack.iac",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.metrics.prometheus",
+      "to": "stack.logging_structured",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.oas.spec",
+      "to": "stack.messaging",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.oas.ui",
+      "to": "stack.metrics_cardinality",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.public.v1.batch.status",
+      "to": "stack.runtime",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.public.v1.batch.submit",
+      "to": "stack.secrets_k8s",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.public.v1.bulk.head",
+      "to": "stack.tls",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.public.v1.metrics_summary",
+      "to": "stack.tracing",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.public.v1.quota",
+      "to": "stack.waf",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.public.v1.resources",
+      "to": "stack.cache_api",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.public.v1.resources.delete",
+      "to": "stack.db",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.public.v1.resources.id",
+      "to": "stack.deploy",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.public.v1.resources.patch",
+      "to": "stack.docs_api",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.public.v1.resources.post",
+      "to": "stack.gateway",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.public.v1.usage",
+      "to": "stack.iac",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.webhooks.deliveries",
+      "to": "stack.logging_structured",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.webhooks.retry",
+      "to": "stack.messaging",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "constraint.api_deprecation",
+      "to": "feature.admin_audit",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.backup_rpo",
+      "to": "feature.api_keys",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.concurrent_requests",
+      "to": "feature.batch_jobs",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.data_classification",
+      "to": "feature.circuit_breaker",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.dependency_updates",
+      "to": "feature.client_sdks",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.encryption_at_rest",
+      "to": "feature.dead_letter",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.latency_budget",
+      "to": "feature.graceful_degradation",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.log_retention",
+      "to": "feature.health_aggregated",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.oncall_api",
+      "to": "feature.ip_allowlist",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.payload_max",
+      "to": "feature.openapi_diff",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.region_failover",
+      "to": "feature.quota_service",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.synthetic_staging",
+      "to": "feature.request_signing",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "decision.auth",
+      "to": "stack.metrics_cardinality",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.breaking_changes",
+      "to": "stack.runtime",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.cors",
+      "to": "stack.secrets_k8s",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.error_format",
+      "to": "stack.tls",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.idempotency",
+      "to": "stack.tracing",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.pagination",
+      "to": "stack.waf",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.rate_limits",
+      "to": "stack.cache_api",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.synchronous_timeout",
+      "to": "stack.db",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.versioning",
+      "to": "stack.deploy",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.webhook_signing",
+      "to": "stack.docs_api",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "deployment.blue_green",
+      "to": "stack.gateway",
+      "type": "deployed_with",
+      "description": ""
+    },
+    {
+      "from": "deployment.canary_analysis",
+      "to": "stack.iac",
+      "type": "deployed_with",
+      "description": ""
+    },
+    {
+      "from": "deployment.cost_cap",
+      "to": "stack.logging_structured",
+      "type": "deployed_with",
+      "description": ""
+    },
+    {
+      "from": "deployment.migrations_job",
+      "to": "stack.messaging",
+      "type": "deployed_with",
+      "description": ""
+    },
+    {
+      "from": "deployment.network_policy",
+      "to": "stack.metrics_cardinality",
+      "type": "deployed_with",
+      "description": ""
+    },
+    {
+      "from": "feature.admin_audit",
+      "to": "test.chaos",
+      "type": "tested_by",
+      "description": ""
+    },
+    {
+      "from": "feature.api_keys",
+      "to": "test.contract_public",
+      "type": "tested_by",
+      "description": ""
+    },
+    {
+      "from": "feature.batch_jobs",
+      "to": "test.fuzz_json",
+      "type": "tested_by",
+      "description": ""
+    },
+    {
+      "from": "feature.circuit_breaker",
+      "to": "test.integration",
+      "type": "tested_by",
+      "description": ""
+    },
+    {
+      "from": "feature.client_sdks",
+      "to": "test.load_gateway",
+      "type": "tested_by",
+      "description": ""
+    },
+    {
+      "from": "feature.dead_letter",
+      "to": "test.mutation_api",
+      "type": "tested_by",
+      "description": ""
+    },
+    {
+      "from": "feature.graceful_degradation",
+      "to": "test.tls_pinning",
+      "type": "tested_by",
+      "description": ""
+    },
+    {
+      "from": "feature.request_validation",
+      "to": "decision.auth",
+      "type": "implements",
+      "description": ""
+    },
+    {
+      "from": "feature.retry_policy",
+      "to": "decision.breaking_changes",
+      "type": "implements",
+      "description": ""
+    },
+    {
+      "from": "feature.schema_registry",
+      "to": "decision.cors",
+      "type": "implements",
+      "description": ""
+    },
+    {
+      "from": "feature.shadow_mode",
+      "to": "decision.error_format",
+      "type": "implements",
+      "description": ""
+    },
+    {
+      "from": "feature.traffic_split",
+      "to": "decision.idempotency",
+      "type": "implements",
+      "description": ""
+    },
+    {
+      "from": "feature.usage_metering",
+      "to": "decision.pagination",
+      "type": "implements",
+      "description": ""
+    },
+    {
+      "from": "migration.dual_write",
+      "to": "stack.runtime",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "migration.monolith_split",
+      "to": "stack.secrets_k8s",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "monitoring.alert_routing",
+      "to": "stack.tls",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "monitoring.slo_api",
+      "to": "stack.tracing",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "monitoring.synthetic",
+      "to": "stack.waf",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "monitoring.trace_sampling",
+      "to": "stack.cache_api",
+      "type": "related_to",
+      "description": ""
+    }
+  ],
+  "episodes": [
+    {
+      "type": "extraction",
+      "actor": "paper3-basis-to-seed",
+      "content": "Paper 3 api service seed generated from paper3_basis.skf.json",
+      "timestamp": "2026-04-01T00:00:26Z"
+    }
+  ],
+  "rules": []
+}

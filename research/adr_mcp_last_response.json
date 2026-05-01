@@ -1,0 +1,1 @@
+"Error calling memory_upsert_fact_v1. Status code: 403. Response: {\"detail\":\"Creating 'decision' facts is not allowed in the ready phase\"}"

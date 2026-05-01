@@ -1,0 +1,21 @@
+\begin{table}[t]
+\centering
+\caption{Offline ablation on the Real Data Lab semantic slice (40 contradiction proposals, 26 benign controls; 79-fact SKF baseline; MiniLM retrieval). Each column runs the \textbf{hybrid cascade lab} (v2.0-hybrid-resplit shape: Stages 1--5 in cost order, temporal-only \texttt{prune\_set}, plane arbitration, Stage~5 = progressive NLI pipeline without live LLM judge). Configs A$\to$E stack defenses; F--G swap NLI encoder. SparseCL rerank when installed; \textbf{E-Ver.}\ = Hoyer pre-filter only.}
+\label{tab:semantic_ablation}
+\small
+\begin{tabular}{l c c c c c c c c}
+\toprule
+\textbf{Config} & \textbf{Bidir} & \textbf{Margin} & \textbf{E-Ver.} & \textbf{TP} & \textbf{FP} & \textbf{FN} & \textbf{Precision} & \textbf{F1} \\
+\midrule
+  A & -- & -- & -- & 36 & 22 & 4 & 0.621 & 0.735 \\
+  B & \checkmark & -- & -- & 32 & 16 & 8 & 0.667 & 0.727 \\
+  C & \checkmark & 0.40 & -- & 32 & 16 & 8 & 0.667 & 0.727 \\
+  D & \checkmark & 0.40 & -- & 11 & 0 & 29 & 1.000 & 0.431 \\
+  E & \checkmark & 0.40 & -- & 11 & 0 & 29 & 1.000 & 0.431 \\
+  F$^\dagger$ & \checkmark & 0.40 & -- & 11 & 0 & 29 & 1.000 & 0.431 \\
+  G$^\dagger$ & \checkmark & 0.40 & -- & 11 & 0 & 29 & 1.000 & 0.431 \\
+\bottomrule
+\end{tabular}
+\vspace{2pt}
+{\footnotesize $^\dagger$ DeBERTa-v3-large-mnli-fever-anli-ling-wanli}
+\end{table}

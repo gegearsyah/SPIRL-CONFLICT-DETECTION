@@ -1,0 +1,416 @@
+[
+  {
+    "source": "f-feat-01",
+    "target": "f-dec-01",
+    "edge_type": "implements",
+    "justification": "Feature 01 implements paired architecture decision 01."
+  },
+  {
+    "source": "f-feat-02",
+    "target": "f-dec-02",
+    "edge_type": "implements",
+    "justification": "Feature 02 implements paired architecture decision 02."
+  },
+  {
+    "source": "f-feat-03",
+    "target": "f-dec-03",
+    "edge_type": "implements",
+    "justification": "Feature 03 implements paired architecture decision 03."
+  },
+  {
+    "source": "f-feat-04",
+    "target": "f-dec-04",
+    "edge_type": "implements",
+    "justification": "Feature 04 implements paired architecture decision 04."
+  },
+  {
+    "source": "f-feat-05",
+    "target": "f-dec-05",
+    "edge_type": "implements",
+    "justification": "Feature 05 implements paired architecture decision 05."
+  },
+  {
+    "source": "f-feat-06",
+    "target": "f-dec-06",
+    "edge_type": "implements",
+    "justification": "Feature 06 implements paired architecture decision 06."
+  },
+  {
+    "source": "f-feat-07",
+    "target": "f-dec-07",
+    "edge_type": "implements",
+    "justification": "Feature 07 implements paired architecture decision 07."
+  },
+  {
+    "source": "f-feat-08",
+    "target": "f-dec-08",
+    "edge_type": "implements",
+    "justification": "Feature 08 implements paired architecture decision 08."
+  },
+  {
+    "source": "f-feat-09",
+    "target": "f-dec-09",
+    "edge_type": "implements",
+    "justification": "Feature 09 implements paired architecture decision 09."
+  },
+  {
+    "source": "f-feat-10",
+    "target": "f-dec-10",
+    "edge_type": "implements",
+    "justification": "Feature 10 implements paired architecture decision 10."
+  },
+  {
+    "source": "f-dec-01",
+    "target": "f-stack-01",
+    "edge_type": "depends_on",
+    "justification": "Decision 01 assumes supporting stack component 01."
+  },
+  {
+    "source": "f-dec-02",
+    "target": "f-stack-02",
+    "edge_type": "depends_on",
+    "justification": "Decision 02 assumes supporting stack component 02."
+  },
+  {
+    "source": "f-dec-03",
+    "target": "f-stack-03",
+    "edge_type": "depends_on",
+    "justification": "Decision 03 assumes supporting stack component 03."
+  },
+  {
+    "source": "f-dec-04",
+    "target": "f-stack-04",
+    "edge_type": "depends_on",
+    "justification": "Decision 04 assumes supporting stack component 04."
+  },
+  {
+    "source": "f-dec-05",
+    "target": "f-stack-05",
+    "edge_type": "depends_on",
+    "justification": "Decision 05 assumes supporting stack component 05."
+  },
+  {
+    "source": "f-dec-06",
+    "target": "f-stack-06",
+    "edge_type": "depends_on",
+    "justification": "Decision 06 assumes supporting stack component 06."
+  },
+  {
+    "source": "f-dec-07",
+    "target": "f-stack-07",
+    "edge_type": "depends_on",
+    "justification": "Decision 07 assumes supporting stack component 07."
+  },
+  {
+    "source": "f-dec-08",
+    "target": "f-stack-08",
+    "edge_type": "depends_on",
+    "justification": "Decision 08 assumes supporting stack component 08."
+  },
+  {
+    "source": "f-dec-09",
+    "target": "f-stack-09",
+    "edge_type": "depends_on",
+    "justification": "Decision 09 assumes supporting stack component 09."
+  },
+  {
+    "source": "f-dec-10",
+    "target": "f-stack-10",
+    "edge_type": "depends_on",
+    "justification": "Decision 10 assumes supporting stack component 10."
+  },
+  {
+    "source": "f-con-01",
+    "target": "f-dec-01",
+    "edge_type": "related_to",
+    "justification": "Constraint 01 governs the same concern space as decision 01."
+  },
+  {
+    "source": "f-con-02",
+    "target": "f-dec-02",
+    "edge_type": "related_to",
+    "justification": "Constraint 02 governs the same concern space as decision 02."
+  },
+  {
+    "source": "f-con-03",
+    "target": "f-dec-03",
+    "edge_type": "related_to",
+    "justification": "Constraint 03 governs the same concern space as decision 03."
+  },
+  {
+    "source": "f-con-04",
+    "target": "f-dec-04",
+    "edge_type": "related_to",
+    "justification": "Constraint 04 governs the same concern space as decision 04."
+  },
+  {
+    "source": "f-con-05",
+    "target": "f-dec-05",
+    "edge_type": "related_to",
+    "justification": "Constraint 05 governs the same concern space as decision 05."
+  },
+  {
+    "source": "f-con-06",
+    "target": "f-dec-06",
+    "edge_type": "related_to",
+    "justification": "Constraint 06 governs the same concern space as decision 06."
+  },
+  {
+    "source": "f-con-07",
+    "target": "f-dec-07",
+    "edge_type": "related_to",
+    "justification": "Constraint 07 governs the same concern space as decision 07."
+  },
+  {
+    "source": "f-con-08",
+    "target": "f-dec-08",
+    "edge_type": "related_to",
+    "justification": "Constraint 08 governs the same concern space as decision 08."
+  },
+  {
+    "source": "f-con-09",
+    "target": "f-dec-09",
+    "edge_type": "related_to",
+    "justification": "Constraint 09 governs the same concern space as decision 09."
+  },
+  {
+    "source": "f-con-10",
+    "target": "f-dec-10",
+    "edge_type": "related_to",
+    "justification": "Constraint 10 governs the same concern space as decision 10."
+  },
+  {
+    "source": "f-api-02",
+    "target": "f-feat-04",
+    "edge_type": "related_to",
+    "justification": "Search API integrates with search-backed feature."
+  },
+  {
+    "source": "f-api-03",
+    "target": "f-feat-01",
+    "edge_type": "related_to",
+    "justification": "Catalog locations API registers catalog entities."
+  },
+  {
+    "source": "f-api-04",
+    "target": "f-feat-02",
+    "edge_type": "related_to",
+    "justification": "Create/actions enumerates scaffolder/template actions."
+  },
+  {
+    "source": "f-api-05",
+    "target": "f-feat-07",
+    "edge_type": "related_to",
+    "justification": "Metrics endpoint surfaces analytics instrumentation."
+  },
+  {
+    "source": "f-api-06",
+    "target": "f-feat-05",
+    "edge_type": "related_to",
+    "justification": "RBAC permissions registry backs access control feature."
+  },
+  {
+    "source": "f-api-07",
+    "target": "f-feat-03",
+    "edge_type": "related_to",
+    "justification": "TechDocs routing aligns with docs-like-code feature."
+  },
+  {
+    "source": "f-api-08",
+    "target": "f-dec-02",
+    "edge_type": "related_to",
+    "justification": "Scaffolder task list ties to catalog entity model ADR."
+  },
+  {
+    "source": "f-api-09",
+    "target": "f-feat-07",
+    "edge_type": "related_to",
+    "justification": "Analytics API matches portal telemetry feature."
+  },
+  {
+    "source": "f-api-10",
+    "target": "f-stack-01",
+    "edge_type": "related_to",
+    "justification": "FetchApi relates to Node/Express backend stack."
+  },
+  {
+    "source": "f-api-11",
+    "target": "f-mig-06",
+    "edge_type": "related_to",
+    "justification": "Task logs relate to batched migration operations."
+  },
+  {
+    "source": "f-api-12",
+    "target": "f-feat-06",
+    "edge_type": "related_to",
+    "justification": "ChatOps migration list maps to batched migrations feature."
+  },
+  {
+    "source": "f-api-13",
+    "target": "f-feat-06",
+    "edge_type": "related_to",
+    "justification": "ChatOps migration status maps to batched migrations feature."
+  },
+  {
+    "source": "f-api-14",
+    "target": "f-feat-01",
+    "edge_type": "related_to",
+    "justification": "Identity API ties to catalog/entity context."
+  },
+  {
+    "source": "f-api-15",
+    "target": "f-feat-08",
+    "edge_type": "related_to",
+    "justification": "Catalog entities by-query serves API-docs feature."
+  },
+  {
+    "source": "f-dep-01",
+    "target": "f-stack-01",
+    "edge_type": "depends_on",
+    "justification": "Deployment pattern 01 relies on stack tier 01."
+  },
+  {
+    "source": "f-dep-02",
+    "target": "f-stack-02",
+    "edge_type": "depends_on",
+    "justification": "Deployment pattern 02 relies on stack tier 02."
+  },
+  {
+    "source": "f-dep-03",
+    "target": "f-stack-03",
+    "edge_type": "depends_on",
+    "justification": "Deployment pattern 03 relies on stack tier 03."
+  },
+  {
+    "source": "f-dep-04",
+    "target": "f-stack-04",
+    "edge_type": "depends_on",
+    "justification": "Deployment pattern 04 relies on stack tier 04."
+  },
+  {
+    "source": "f-dep-05",
+    "target": "f-stack-05",
+    "edge_type": "depends_on",
+    "justification": "Deployment pattern 05 relies on stack tier 05."
+  },
+  {
+    "source": "f-dep-06",
+    "target": "f-stack-06",
+    "edge_type": "depends_on",
+    "justification": "Deployment pattern 06 relies on stack tier 06."
+  },
+  {
+    "source": "f-mig-01",
+    "target": "f-dec-01",
+    "edge_type": "related_to",
+    "justification": "Migration 01 operationalizes paired decision 01."
+  },
+  {
+    "source": "f-mig-02",
+    "target": "f-dec-02",
+    "edge_type": "related_to",
+    "justification": "Migration 02 operationalizes paired decision 02."
+  },
+  {
+    "source": "f-mig-03",
+    "target": "f-dec-03",
+    "edge_type": "related_to",
+    "justification": "Migration 03 operationalizes paired decision 03."
+  },
+  {
+    "source": "f-mig-04",
+    "target": "f-dec-04",
+    "edge_type": "related_to",
+    "justification": "Migration 04 operationalizes paired decision 04."
+  },
+  {
+    "source": "f-mig-05",
+    "target": "f-dec-05",
+    "edge_type": "related_to",
+    "justification": "Migration 05 operationalizes paired decision 05."
+  },
+  {
+    "source": "f-mig-06",
+    "target": "f-dec-06",
+    "edge_type": "related_to",
+    "justification": "Migration 06 operationalizes paired decision 06."
+  },
+  {
+    "source": "f-mig-07",
+    "target": "f-dec-07",
+    "edge_type": "related_to",
+    "justification": "Migration 07 operationalizes paired decision 07."
+  },
+  {
+    "source": "f-test-01",
+    "target": "f-feat-02",
+    "edge_type": "related_to",
+    "justification": "Scaffolder dry-run exercises template feature."
+  },
+  {
+    "source": "f-test-02",
+    "target": "f-dec-09",
+    "edge_type": "related_to",
+    "justification": "GitLab DB testing validates batched migration decision."
+  },
+  {
+    "source": "f-test-03",
+    "target": "f-stack-02",
+    "edge_type": "related_to",
+    "justification": "Jest suite targets React frontend stack."
+  },
+  {
+    "source": "f-test-04",
+    "target": "f-dec-09",
+    "edge_type": "related_to",
+    "justification": "Migration CI checks align with batched migration ADR."
+  },
+  {
+    "source": "f-test-05",
+    "target": "f-feat-02",
+    "edge_type": "related_to",
+    "justification": "TemplateExamples document scaffolder permutations."
+  },
+  {
+    "source": "f-mon-01",
+    "target": "f-stack-09",
+    "edge_type": "related_to",
+    "justification": "Catalog processing duration metric ties to Prometheus stack."
+  },
+  {
+    "source": "f-mon-02",
+    "target": "f-stack-09",
+    "edge_type": "related_to",
+    "justification": "Queue delay metric ties to Prometheus stack."
+  },
+  {
+    "source": "f-mon-03",
+    "target": "f-api-05",
+    "edge_type": "related_to",
+    "justification": "Scaffolder duration metric references metrics endpoint fact."
+  },
+  {
+    "source": "f-mon-04",
+    "target": "f-feat-06",
+    "edge_type": "related_to",
+    "justification": "ChatOps migration telemetry maps to batched migrations feature."
+  },
+  {
+    "source": "f-mon-05",
+    "target": "f-dec-10",
+    "edge_type": "related_to",
+    "justification": "Entity count metric relates to RBAC/catalog policy ADR."
+  },
+  {
+    "source": "f-mon-06",
+    "target": "f-stack-01",
+    "edge_type": "related_to",
+    "justification": "Background task runs metric ties to Node backend stack."
+  },
+  {
+    "source": "f-mon-07",
+    "target": "f-feat-04",
+    "edge_type": "related_to",
+    "justification": "Grafana alert integration relates to search feature surface."
+  }
+]

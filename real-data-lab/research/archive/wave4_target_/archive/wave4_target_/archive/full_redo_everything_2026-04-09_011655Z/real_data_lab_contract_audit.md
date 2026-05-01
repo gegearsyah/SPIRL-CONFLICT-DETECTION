@@ -1,0 +1,1 @@
+# Contract Audit\n\nGenerated: 2026-04-08T20:37:19Z\n- Report status: `diagnostic_only`\n- Rows scored: `110`\n- Contract-complete rows: `63`\n- Contract-incomplete rows: `47`\n- Semantic trace missing: `0`\n

@@ -1,0 +1,17 @@
+{
+  "description": "Real Data Lab mixed workload: conflict corpus + benign corpus for FP / precision evaluation.",
+  "conflict_table": "real-data-lab/list_conflict.md",
+  "benign_table": "real-data-lab/list_benign.md",
+  "expected_row_counts": {
+    "conflict": 110,
+    "benign": 40,
+    "combined": 150
+  },
+  "prompt": "real-data-lab/research_prompt/real_data_lab_mixed_workload_prompt.md",
+  "recommended_run_order": [
+    "Phase 1 baseline (existing)",
+    "Phase 2 list_conflict.md (110)",
+    "Phase 2b list_benign.md (40)",
+    "Phase 3 + mixed metrics extension"
+  ]
+}

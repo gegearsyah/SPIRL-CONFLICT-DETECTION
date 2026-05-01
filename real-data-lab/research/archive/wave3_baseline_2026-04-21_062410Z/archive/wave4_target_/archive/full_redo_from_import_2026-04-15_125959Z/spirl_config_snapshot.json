@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "recommended_spirl_env_SEMANTIC_RETRIEVAL_EXCLUDED_KEY_PREFIXES": "p-,research.",
+  "paper3_experiment_id": "C",
+  "paper3_architecture_label": "spirl_predicate_routed_conflicts_apr2026",
+  "paper3_fact_kind": "decision",
+  "api_base": "http://localhost:8000",
+  "real_data_lab_project_id": "ed304542-3fd5-4db8-8ba7-95a573fd0de6",
+  "real_data_lab_conflict_list_path": "real-data-lab/list_conflict.md",
+  "real_data_lab_benign_list_path": "real-data-lab/list_benign.md",
+  "real_data_lab_poll_max_s": 120,
+  "real_data_lab_conflict_poll_after_skew_s": 120,
+  "real_data_lab_semantic_hoyer_lambda": 0.25,
+  "real_data_lab_architecture_doc": "Spiral/docs/CONFLICT_DETECTION_ARCHITECTURE.md",
+  "real_data_lab_architecture_label": "predicate_routed_staged_embedding_nli",
+  "projects": {
+    "real_data_lab_project_core_platform": "ed304542-3fd5-4db8-8ba7-95a573fd0de6"
+  }
+}

@@ -1,0 +1,200 @@
+﻿[
+    {
+        "id":  "d-sem-01",
+        "expected":  "semantic_contradiction",
+        "final":  "semantic_contradiction",
+        "plane":  "semantic",
+        "outcome":  "detected",
+        "governance":  "needs_review",
+        "base":  null,
+        "conflict":  null,
+        "rationale":  null
+    },
+    {
+        "id":  "d-sem-02",
+        "expected":  "semantic_contradiction",
+        "final":  null,
+        "plane":  "none",
+        "outcome":  "abstain",
+        "governance":  "benign",
+        "base":  null,
+        "conflict":  null,
+        "rationale":  null
+    },
+    {
+        "id":  "d-sem-03",
+        "expected":  "semantic_contradiction",
+        "final":  "semantic_contradiction",
+        "plane":  "semantic",
+        "outcome":  "detected",
+        "governance":  "needs_review",
+        "base":  null,
+        "conflict":  null,
+        "rationale":  null
+    },
+    {
+        "id":  "d-sem-04",
+        "expected":  "semantic_contradiction",
+        "final":  null,
+        "plane":  "none",
+        "outcome":  "abstain",
+        "governance":  "benign",
+        "base":  null,
+        "conflict":  null,
+        "rationale":  null
+    },
+    {
+        "id":  "d-con-01",
+        "expected":  "constraint_violation",
+        "final":  "needs_review",
+        "plane":  "governance_selector",
+        "outcome":  "detected",
+        "governance":  "needs_review",
+        "base":  null,
+        "conflict":  null,
+        "rationale":  null
+    },
+    {
+        "id":  "d-con-02",
+        "expected":  "constraint_violation",
+        "final":  "needs_review",
+        "plane":  "governance_selector",
+        "outcome":  "detected",
+        "governance":  "needs_review",
+        "base":  null,
+        "conflict":  null,
+        "rationale":  null
+    },
+    {
+        "id":  "d-tmp-01",
+        "expected":  "temporal_invalidation",
+        "final":  "temporal_invalidation",
+        "plane":  "structural",
+        "outcome":  "detected",
+        "governance":  "typed_conflict",
+        "base":  null,
+        "conflict":  null,
+        "rationale":  null
+    },
+    {
+        "id":  "d-tmp-02",
+        "expected":  "temporal_invalidation",
+        "final":  "temporal_invalidation",
+        "plane":  "semantic",
+        "outcome":  "detected",
+        "governance":  "needs_review",
+        "base":  null,
+        "conflict":  null,
+        "rationale":  null
+    },
+    {
+        "id":  "d-amb-01",
+        "expected":  "ambiguous_case",
+        "final":  null,
+        "plane":  "none",
+        "outcome":  "abstain",
+        "governance":  "benign",
+        "base":  null,
+        "conflict":  null,
+        "rationale":  null
+    },
+    {
+        "id":  "d-amb-02",
+        "expected":  "ambiguous_case",
+        "final":  null,
+        "plane":  "none",
+        "outcome":  "abstain",
+        "governance":  "benign",
+        "base":  null,
+        "conflict":  null,
+        "rationale":  null
+    },
+    {
+        "id":  "d-amb-03",
+        "expected":  "ambiguous_case",
+        "final":  null,
+        "plane":  "none",
+        "outcome":  "abstain",
+        "governance":  "benign",
+        "base":  null,
+        "conflict":  null,
+        "rationale":  null
+    },
+    {
+        "id":  "d-amb-04",
+        "expected":  "ambiguous_case",
+        "final":  "temporal_invalidation",
+        "plane":  "structural",
+        "outcome":  "detected",
+        "governance":  "needs_review",
+        "base":  null,
+        "conflict":  null,
+        "rationale":  null
+    },
+    {
+        "id":  "d-ben-01",
+        "expected":  "benign",
+        "final":  null,
+        "plane":  "none",
+        "outcome":  "abstain",
+        "governance":  "benign",
+        "base":  null,
+        "conflict":  null,
+        "rationale":  null
+    },
+    {
+        "id":  "d-ben-02",
+        "expected":  "benign",
+        "final":  null,
+        "plane":  "none",
+        "outcome":  "abstain",
+        "governance":  "benign",
+        "base":  null,
+        "conflict":  null,
+        "rationale":  null
+    },
+    {
+        "id":  "d-ben-03",
+        "expected":  "benign",
+        "final":  "semantic_contradiction",
+        "plane":  "semantic",
+        "outcome":  "detected",
+        "governance":  "needs_review",
+        "base":  null,
+        "conflict":  null,
+        "rationale":  null
+    },
+    {
+        "id":  "d-ben-04",
+        "expected":  "benign",
+        "final":  null,
+        "plane":  "none",
+        "outcome":  "abstain",
+        "governance":  "benign",
+        "base":  null,
+        "conflict":  null,
+        "rationale":  null
+    },
+    {
+        "id":  "d-ben-05",
+        "expected":  "benign",
+        "final":  "semantic_contradiction",
+        "plane":  "semantic",
+        "outcome":  "detected",
+        "governance":  "needs_review",
+        "base":  null,
+        "conflict":  null,
+        "rationale":  null
+    },
+    {
+        "id":  "d-ben-06",
+        "expected":  "benign",
+        "final":  "semantic_contradiction",
+        "plane":  "semantic",
+        "outcome":  "detected",
+        "governance":  "needs_review",
+        "base":  null,
+        "conflict":  null,
+        "rationale":  null
+    }
+]

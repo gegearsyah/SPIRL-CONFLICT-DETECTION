@@ -1,0 +1,2771 @@
+{
+  "format": "paper3_basis_skf",
+  "version": 1,
+  "exported_at": "2026-03-31T23:57:32Z",
+  "description": "Paper 3 corpus basis: canonical fact keys, kinds, tier, bodies, and typed edges after Phase 1. To replicate on another instance: create three empty projects, copy corpus bodies/keys into Spirl (or restore from backup), set projects.* in .spirl/config.json to the new UUIDs, then run scripts/paper3_phase1_mcp_run.py. Diff this file between runs to verify only project_id changed.",
+  "spirl_config_snapshot": {
+    "paper3_fact_kind": "decision",
+    "paper3_experiment_id": "C",
+    "paper3_architecture_label": "spirl_mcp_stack_v2",
+    "api_base": "http://localhost:8000",
+    "projects": {
+      "paper3_data_pipeline": "b7e311b5-db87-4bb1-94b3-a0b51ea4caaa",
+      "paper3_saas": "cdc4e20b-5c49-4feb-aafb-eca3b5157ae2",
+      "paper3_api_service": "aa75eda0-4205-44ef-b692-5248ff0eb956"
+    }
+  },
+  "corpora": [
+    {
+      "slug": "paper3_data_pipeline",
+      "project_id": "b7e311b5-db87-4bb1-94b3-a0b51ea4caaa",
+      "facts": [
+        {
+          "key": "api.dbt.artifacts.fetch",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /dbt/v1/runs/{id}/artifacts — manifest and run results."
+        },
+        {
+          "key": "api.dbt.jobs.trigger",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /dbt/v1/jobs/run — trigger job for tag or model subset."
+        },
+        {
+          "key": "api.dev.sync.request",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /dev/v1/sync — request dev schema sync from prod (masked)."
+        },
+        {
+          "key": "api.dev.sync.status",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /dev/v1/sync/{id} — sync job progress."
+        },
+        {
+          "key": "api.ingest.kafka.publish",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "Internal: produce to validated topics with schema registry check."
+        },
+        {
+          "key": "api.lineage.event",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /lineage/v1/events — ingest OpenLineage event batch."
+        },
+        {
+          "key": "api.metadata.glossary",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /metadata/v1/glossary — business terms and linked columns."
+        },
+        {
+          "key": "api.metadata.search",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /metadata/v1/search — search tables and columns by tag."
+        },
+        {
+          "key": "api.monitoring.metrics",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /pipeline/v1/metrics/prometheus — internal metrics scrape."
+        },
+        {
+          "key": "api.ops.backfill.approve",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /ops/v1/backfills — request approval workflow id."
+        },
+        {
+          "key": "api.ops.backfill.status",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /ops/v1/backfills/{id} — approval and execution state."
+        },
+        {
+          "key": "api.pipeline.costs.alloc",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /pipeline/v1/costs — allocation by DAG and task."
+        },
+        {
+          "key": "api.pipeline.datasets.lineage",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /pipeline/v1/datasets/{id}/lineage — upstream/downstream."
+        },
+        {
+          "key": "api.pipeline.datasets.register",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /pipeline/v1/datasets — register dataset metadata."
+        },
+        {
+          "key": "api.pipeline.quality.report",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /pipeline/v1/quality/{run_id} — GE results summary."
+        },
+        {
+          "key": "api.pipeline.runs.cancel",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /pipeline/v1/runs/{id}/cancel — cancel queued or running DAG run."
+        },
+        {
+          "key": "api.pipeline.runs.status",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /pipeline/v1/runs/{id} — state, task instances, logs URI."
+        },
+        {
+          "key": "api.pipeline.runs.trigger",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /pipeline/v1/runs — trigger DAG with conf JSON."
+        },
+        {
+          "key": "api.security.audit_export",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /pipeline/v1/audit/export — export access logs for tenant."
+        },
+        {
+          "key": "api.warehouse.query.cancel",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /warehouse/v1/query/{id}/cancel — cancel running query."
+        },
+        {
+          "key": "api.warehouse.query.submit",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /warehouse/v1/query — async query with warehouse selection."
+        },
+        {
+          "key": "api.warehouse.tables.stats",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /warehouse/v1/tables/{name}/stats — row count, freshness."
+        },
+        {
+          "key": "constraint.ad_hoc_cost",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "Ad hoc queries over USD 50 require analyst approval ticket."
+        },
+        {
+          "key": "constraint.backup_warehouse",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "Weekly logical export of gold marts to immutable bucket."
+        },
+        {
+          "key": "constraint.cross_dep",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "No circular dependencies between gold marts; enforced in manifest lint."
+        },
+        {
+          "key": "constraint.dag_complexity",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "Max 200 tasks per DAG; split otherwise."
+        },
+        {
+          "key": "constraint.data_minimization",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "Exports for ML limited to approved feature sets."
+        },
+        {
+          "key": "constraint.dbt_runtime",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "No single dbt model > 2h runtime without incremental strategy."
+        },
+        {
+          "key": "constraint.encryption_in_transit",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "TLS between all services; no plaintext JDBC."
+        },
+        {
+          "key": "constraint.kafka_retention",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "Default topic retention 7d; extended only with approval."
+        },
+        {
+          "key": "constraint.oncall_data",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "Data platform on-call 24/5; weekend only during freeze windows."
+        },
+        {
+          "key": "constraint.pii_columns",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "All PII columns must have classification tag before merge to main."
+        },
+        {
+          "key": "constraint.snowflake_credits",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "Monthly Snowflake credit budget; throttle heavy ad hoc queries."
+        },
+        {
+          "key": "constraint.stream_schema",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "All Kafka producers must register schema before first publish."
+        },
+        {
+          "key": "decision.backfill_policy",
+          "kind": "decision",
+          "tier": 1,
+          "body": "Backfills require ticket; max 90d window per run without arch review."
+        },
+        {
+          "key": "decision.idempotency_dag",
+          "kind": "decision",
+          "tier": 1,
+          "body": "Airflow tasks use deterministic run_id + data interval for idempotency."
+        },
+        {
+          "key": "decision.lineage_pii",
+          "kind": "decision",
+          "tier": 1,
+          "body": "PII columns must appear in lineage with masking policy reference."
+        },
+        {
+          "key": "decision.medallion",
+          "kind": "decision",
+          "tier": 1,
+          "body": "Bronze raw, silver conformed, gold curated marts; no skips."
+        },
+        {
+          "key": "decision.partitioning",
+          "kind": "decision",
+          "tier": 1,
+          "body": "Date partition on all large tables; cluster on tenant where applicable."
+        },
+        {
+          "key": "decision.pii_pipeline",
+          "kind": "decision",
+          "tier": 1,
+          "body": "Tokenize PII in silver; only hashed keys in gold unless approved."
+        },
+        {
+          "key": "decision.retention_lake",
+          "kind": "decision",
+          "tier": 1,
+          "body": "Bronze 2y; silver 5y; gold indefinite with legal hold support."
+        },
+        {
+          "key": "decision.schema_evolution",
+          "kind": "decision",
+          "tier": 1,
+          "body": "Backward compatible Avro for Kafka; compatibility CI gate."
+        },
+        {
+          "key": "decision.sla_ingest",
+          "kind": "decision",
+          "tier": 1,
+          "body": "Streaming lag p95 under 2 minutes; batch daily by 08:00 UTC."
+        },
+        {
+          "key": "decision.test_env_isolation",
+          "kind": "decision",
+          "tier": 1,
+          "body": "Prod data never lands in dev; synthetic or masked only."
+        },
+        {
+          "key": "deployment.airflow_helm",
+          "kind": "deployment",
+          "tier": 1,
+          "body": "Airflow deployed via official Helm chart; IRSA for S3 access."
+        },
+        {
+          "key": "deployment.dbt_ci",
+          "kind": "deployment",
+          "tier": 1,
+          "body": "dbt run --select state:modified+ in PR CI on clone warehouse."
+        },
+        {
+          "key": "deployment.multi_az",
+          "kind": "deployment",
+          "tier": 1,
+          "body": "Kafka and Airflow control plane multi-AZ; workers spread across AZs."
+        },
+        {
+          "key": "deployment.read_replica_bi",
+          "kind": "deployment",
+          "tier": 1,
+          "body": "BI tools pinned to read replica; no queries on primary."
+        },
+        {
+          "key": "deployment.secrets_rotation",
+          "kind": "deployment",
+          "tier": 1,
+          "body": "Quarterly rotation of warehouse service accounts."
+        },
+        {
+          "key": "feature.access_rbac",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Snowflake RBAC mapped from corporate IdP groups."
+        },
+        {
+          "key": "feature.anomaly_detection",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Statistical anomaly jobs on KPI streams; optional ML model."
+        },
+        {
+          "key": "feature.column_lineage",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Column-level lineage from dbt exposures to BI dashboards."
+        },
+        {
+          "key": "feature.cost_attribution",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Per-pipeline dollar cost estimates in lineage graph."
+        },
+        {
+          "key": "feature.cost_chargeback",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Monthly chargeback report per domain owner from warehouse tags."
+        },
+        {
+          "key": "feature.cross_region_copy",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Approved datasets replicated to EU bucket for GDPR analysis."
+        },
+        {
+          "key": "feature.daily_mart_refresh",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Nightly refresh of revenue and churn marts with data quality gates."
+        },
+        {
+          "key": "feature.data_contract",
+          "kind": "feature",
+          "tier": 1,
+          "body": "YAML contracts for gold tables enforced in CI."
+        },
+        {
+          "key": "feature.dq_dashboard",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Single pane for failed expectations and blocking downstream."
+        },
+        {
+          "key": "feature.incremental_models",
+          "kind": "feature",
+          "tier": 1,
+          "body": "dbt incremental models for large fact tables."
+        },
+        {
+          "key": "feature.orchestration_alerts",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Airflow SLA misses page data platform on-call."
+        },
+        {
+          "key": "feature.partition_pruning",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Query guardrails in BI tool to require partition filters."
+        },
+        {
+          "key": "feature.sample_pii",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Row-level sampling with PII redaction for analyst sandbox."
+        },
+        {
+          "key": "feature.seed_data",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Dev environments seeded from anonymized production sample."
+        },
+        {
+          "key": "feature.snapshot_scd2",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Type-2 SCD snapshots for slowly changing dimensions."
+        },
+        {
+          "key": "feature.streaming_agg",
+          "kind": "feature",
+          "tier": 1,
+          "body": "15-minute rolling aggregates for funnel metrics."
+        },
+        {
+          "key": "feature.time_travel",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Snowflake time travel 7d for operational recovery drills."
+        },
+        {
+          "key": "migration.kafka_cluster",
+          "kind": "migration",
+          "tier": 1,
+          "body": "Dual-write to new cluster for 2 weeks; consumer offset validation."
+        },
+        {
+          "key": "migration.legacy_oracle",
+          "kind": "migration",
+          "tier": 1,
+          "body": "Oracle EDW sunset; parallel run 60d with reconciliation reports."
+        },
+        {
+          "key": "monitoring.cost_anomaly",
+          "kind": "monitoring",
+          "tier": 1,
+          "body": "Detect spend spikes vs 4-week rolling average."
+        },
+        {
+          "key": "monitoring.dag_duration_trend",
+          "kind": "monitoring",
+          "tier": 1,
+          "body": "Week-over-week DAG duration anomaly detection."
+        },
+        {
+          "key": "monitoring.data_freshness",
+          "kind": "monitoring",
+          "tier": 1,
+          "body": "Freshness checks on gold tables; page if > 1h late."
+        },
+        {
+          "key": "monitoring.kafka_lag",
+          "kind": "monitoring",
+          "tier": 1,
+          "body": "Consumer lag alerts with topic-level thresholds."
+        },
+        {
+          "key": "research.p3.baseline.1",
+          "kind": "decision",
+          "tier": 1,
+          "body": "Baseline snapshot: 93 facts, kinds: api_endpoint=22, constraint=12, decision=10, deployment=5, feature=17, migration=2, monitoring=4, stack=14, test=7, pre-existing conflicts resolved: 0"
+        },
+        {
+          "key": "research.p3.edges.justification.1",
+          "kind": "decision",
+          "tier": 1,
+          "body": "api.dbt.artifacts.fetch --communicates_with--> stack.transform: api_endpoint linked to corpus hub | api.dbt.jobs.trigger --communicates_with--> stack.transform: api_endpoint linked to corpus hub | api.dev.sync.request --communicates_with--> stack.warehouse: api_endpoint linked to corpus hub | api.dev.sync.status --communicates_with--> stack.warehouse: api_endpoint linked to corpus hub | api.ingest.kafka.publish --communicates_with--> stack.ingest_batch: api_endpoint linked to corpus hub | api.lineage.event --communicates_with--> stack.lineage: api_endpoint linked to corpus hub | api.metadata.glossary --communicates_with--> stack.metadata: api_endpoint linked to corpus hub | api.metadata.search --communicates_with--> stack.metadata: api_endpoint linked to corpus hub | api.monitoring.metrics --communicates_with--> stack.orchestration: api_endpoint linked to corpus hub | api.ops.backfill.approve --communicates_with--> stack.orchestration: api_endpoint linked to corpus hub | api.ops.backfill.status --communicates_with--> stack.orchestration: api_endpoint linked to corpus hub | api.pipeline.costs.alloc --communicates_with--> stack.orchestration: api_endpoint linked to corpus hub | api.pipeline.datasets.lineage --communicates_with--> stack.lineage: api_endpoint linked to corpus hub | api.pipeline.datasets.register --communicates_with--> stack.orchestration: api_endpoint linked to corpus hub | api.pipeline.quality.report --related_to--> stack.catalog_glue: fallback hub | api.pipeline.runs.cancel --related_to--> stack.compute_spark: fallback hub | api.pipeline.runs.status --related_to--> stack.cost: fallback hub | api.pipeline.runs.trigger --related_to--> stack.elt_tool: fallback hub | api.security.audit_export --communicates_with--> stack.metadata: api_endpoint linked to corpus hub | api.warehouse.query.cancel --communicates_with--> stack.warehouse: api_endpoint linked to corpus hub | api.warehouse.query.submit --communicates_with--> stack.warehouse: api_endpoint linked to corpus hub | api.warehouse.tables.stats --communicates_with--> stack.warehouse: api_endpoint linked to corpus hub | constraint.ad_hoc_cost --related_to--> feature.access_rbac: constraint linked to corpus hub | constraint.backup_warehouse --related_to--> feature.anomaly_detection: constraint linked to corpus hub | constraint.cross_dep --related_to--> feature.column_lineage: constraint linked to corpus hub | constraint.dag_complexity --related_to--> feature.cost_attribution: constraint linked to corpus hub | constraint.data_minimization --related_to--> feature.cost_chargeback: constraint linked to corpus hub | constraint.dbt_runtime --related_to--> feature.cross_region_copy: constraint linked to corpus hub | constraint.encryption_in_transit --related_to--> feature.daily_mart_refresh: constraint linked to corpus hub | constraint.kafka_retention --related_to--> feature.data_contract: constraint linked to corpus hub | constraint.oncall_data --related_to--> feature.dq_dashboard: constraint linked to corpus hub | constraint.pii_columns --related_to--> feature.incremental_models: constraint linked to corpus hub | constraint.snowflake_credits --related_to--> feature.orchestration_alerts: constraint linked to corpus hub | constraint.stream_schema --related_to--> feature.partition_pruning: constraint linked to corpus hub | decision.backfill_policy --depends_on--> stack.iceberg: decision linked to corpus hub | decision.idempotency_dag --depends_on--> stack.ingest_stream: decision linked to corpus hub | decision.lineage_pii --depends_on--> stack.lineage: decision linked to corpus hub | decision.medallion --depends_on--> stack.quality: decision linked to corpus hub | decision.partitioning --depends_on--> stack.schedule_sla: decision linked to corpus hub | decision.pii_pipeline --related_to--> stack.catalog_glue: fallback hub | decision.retention_lake --depends_on--> stack.compute_spark: decision linked to corpus hub | decision.schema_evolution --depends_on--> stack.cost: decision linked to corpus hub | decision.sla_ingest --depends_on--> stack.ingest_batch: decision linked to corpus hub | decision.test_env_isolation --depends_on--> stack.elt_tool: decision linked to corpus hub | deployment.airflow_helm --deployed_with--> stack.iceberg: deployment linked to corpus hub | deployment.dbt_ci --deployed_with--> stack.ingest_stream: deployment linked to corpus hub | deployment.multi_az --deployed_with--> stack.quality: deployment linked to corpus hub | deployment.read_replica_bi --deployed_with--> stack.schedule_sla: deployment linked to corpus hub | deployment.secrets_rotation --deployed_with--> stack.catalog_glue: deployment linked to corpus hub | feature.sample_pii --implements--> decision.backfill_policy: feature linked to corpus hub | feature.seed_data --implements--> decision.idempotency_dag: feature linked to corpus hub | feature.snapshot_scd2 --implements--> decision.lineage_pii: feature linked to corpus hub | feature.streaming_agg --implements--> decision.medallion: feature linked to corpus hub | feature.time_travel --implements--> decision.partitioning: feature linked to corpus hub | migration.kafka_cluster --related_to--> stack.compute_spark: migration linked to corpus hub | migration.legacy_oracle --related_to--> stack.cost: migration linked to corpus hub | monitoring.cost_anomaly --related_to--> stack.elt_tool: monitoring linked to corpus hub | monitoring.dag_duration_trend --related_to--> stack.iceberg: monitoring linked to corpus hub | monitoring.data_freshness --related_to--> stack.ingest_batch: monitoring linked to corpus hub | monitoring.kafka_lag --related_to--> stack.ingest_stream: monitoring linked to corpus hub | feature.access_rbac --tested_by--> test.data_privacy: test linked to corpus hub | feature.anomaly_detection --tested_by--> test.dbt_unit: test linked to corpus hub | feature.column_lineage --tested_by--> test.disaster_recovery: test linked to corpus hub | feature.cost_attribution --tested_by--> test.lineage_completeness: test linked to corpus hub | feature.cost_chargeback --tested_by--> test.pipeline_smoke: test linked to corpus hub | feature.cross_region_copy --tested_by--> test.reconciliation_core: test linked to corpus hub | feature.daily_mart_refresh --tested_by--> test.schema_drift: test linked to corpus hub | research.p3.baseline.1 --related_to--> api.dbt.artifacts.fetch: orphan connectivity pass"
+        },
+        {
+          "key": "stack.catalog_glue",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Glue Data Catalog as secondary; Snowflake external tables for curated zones."
+        },
+        {
+          "key": "stack.compute_spark",
+          "kind": "stack",
+          "tier": 1,
+          "body": "EMR on-demand for large backfills; auto-terminate idle."
+        },
+        {
+          "key": "stack.cost",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Cloudability dashboards; chargeback tags per cost center."
+        },
+        {
+          "key": "stack.elt_tool",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Fivetran for Salesforce and Postgres CDC mirrors (read replicas)."
+        },
+        {
+          "key": "stack.iceberg",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Iceberg tables on S3 for near-real-time marts; Athena for ad hoc."
+        },
+        {
+          "key": "stack.ingest_batch",
+          "kind": "stack",
+          "tier": 1,
+          "body": "S3 landing zone; AWS Glue crawlers for schema inference."
+        },
+        {
+          "key": "stack.ingest_stream",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Kafka cluster (MSK) for clickstream and product events."
+        },
+        {
+          "key": "stack.lineage",
+          "kind": "stack",
+          "tier": 1,
+          "body": "OpenLineage events from Airflow and dbt; Marquez UI."
+        },
+        {
+          "key": "stack.metadata",
+          "kind": "stack",
+          "tier": 1,
+          "body": "DataHub for glossary, ownership, and PII tags."
+        },
+        {
+          "key": "stack.orchestration",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Apache Airflow 3 on Kubernetes; CeleryExecutor for heavy tasks."
+        },
+        {
+          "key": "stack.quality",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Great Expectations checkpoints on critical marts; alerts to Slack."
+        },
+        {
+          "key": "stack.schedule_sla",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Airflow SLA sensors on gold marts with downstream pause."
+        },
+        {
+          "key": "stack.transform",
+          "kind": "stack",
+          "tier": 1,
+          "body": "dbt Core in CI; dbt Cloud for scheduling prod models."
+        },
+        {
+          "key": "stack.warehouse",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Snowflake shared database; separate dev/test warehouses."
+        },
+        {
+          "key": "test.data_privacy",
+          "kind": "test",
+          "tier": 1,
+          "body": "Automated scan for unexpected PII patterns in bronze."
+        },
+        {
+          "key": "test.dbt_unit",
+          "kind": "test",
+          "tier": 1,
+          "body": "dbt unit tests for critical business logic macros."
+        },
+        {
+          "key": "test.disaster_recovery",
+          "kind": "test",
+          "tier": 1,
+          "body": "Quarterly restore test from backup to isolated account."
+        },
+        {
+          "key": "test.lineage_completeness",
+          "kind": "test",
+          "tier": 1,
+          "body": "Nightly job asserts OpenLineage coverage > 95% for gold."
+        },
+        {
+          "key": "test.pipeline_smoke",
+          "kind": "test",
+          "tier": 1,
+          "body": "Post-deploy smoke DAG validating row counts vs baseline."
+        },
+        {
+          "key": "test.reconciliation_core",
+          "kind": "test",
+          "tier": 1,
+          "body": "Daily reconciliation between source totals and gold fact tables."
+        },
+        {
+          "key": "test.schema_drift",
+          "kind": "test",
+          "tier": 1,
+          "body": "Automated compare between landed and expected schemas."
+        }
+      ],
+      "edges": [
+        {
+          "source_fact_key": "api.dbt.artifacts.fetch",
+          "target_fact_key": "stack.transform",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.dbt.jobs.trigger",
+          "target_fact_key": "stack.transform",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.dev.sync.request",
+          "target_fact_key": "stack.warehouse",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.dev.sync.status",
+          "target_fact_key": "stack.warehouse",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.ingest.kafka.publish",
+          "target_fact_key": "stack.ingest_batch",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.lineage.event",
+          "target_fact_key": "stack.lineage",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.metadata.glossary",
+          "target_fact_key": "stack.metadata",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.metadata.search",
+          "target_fact_key": "stack.metadata",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.monitoring.metrics",
+          "target_fact_key": "stack.orchestration",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.ops.backfill.approve",
+          "target_fact_key": "stack.orchestration",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.ops.backfill.status",
+          "target_fact_key": "stack.orchestration",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.pipeline.costs.alloc",
+          "target_fact_key": "stack.orchestration",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.pipeline.datasets.lineage",
+          "target_fact_key": "stack.lineage",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.pipeline.datasets.register",
+          "target_fact_key": "stack.orchestration",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.pipeline.quality.report",
+          "target_fact_key": "stack.catalog_glue",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "api.pipeline.runs.cancel",
+          "target_fact_key": "stack.compute_spark",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "api.pipeline.runs.status",
+          "target_fact_key": "stack.cost",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "api.pipeline.runs.trigger",
+          "target_fact_key": "stack.elt_tool",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "api.security.audit_export",
+          "target_fact_key": "stack.metadata",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.warehouse.query.cancel",
+          "target_fact_key": "stack.warehouse",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.warehouse.query.submit",
+          "target_fact_key": "stack.warehouse",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.warehouse.tables.stats",
+          "target_fact_key": "stack.warehouse",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "constraint.ad_hoc_cost",
+          "target_fact_key": "feature.access_rbac",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.backup_warehouse",
+          "target_fact_key": "feature.anomaly_detection",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.cross_dep",
+          "target_fact_key": "feature.column_lineage",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.dag_complexity",
+          "target_fact_key": "feature.cost_attribution",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.data_minimization",
+          "target_fact_key": "feature.cost_chargeback",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.dbt_runtime",
+          "target_fact_key": "feature.cross_region_copy",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.encryption_in_transit",
+          "target_fact_key": "feature.daily_mart_refresh",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.kafka_retention",
+          "target_fact_key": "feature.data_contract",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.oncall_data",
+          "target_fact_key": "feature.dq_dashboard",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.pii_columns",
+          "target_fact_key": "feature.incremental_models",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.snowflake_credits",
+          "target_fact_key": "feature.orchestration_alerts",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.stream_schema",
+          "target_fact_key": "feature.partition_pruning",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "decision.backfill_policy",
+          "target_fact_key": "stack.iceberg",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.idempotency_dag",
+          "target_fact_key": "stack.ingest_stream",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.lineage_pii",
+          "target_fact_key": "stack.lineage",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.medallion",
+          "target_fact_key": "stack.quality",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.partitioning",
+          "target_fact_key": "stack.schedule_sla",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.pii_pipeline",
+          "target_fact_key": "stack.catalog_glue",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "decision.retention_lake",
+          "target_fact_key": "stack.compute_spark",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.schema_evolution",
+          "target_fact_key": "stack.cost",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.sla_ingest",
+          "target_fact_key": "stack.ingest_batch",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.test_env_isolation",
+          "target_fact_key": "stack.elt_tool",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "deployment.airflow_helm",
+          "target_fact_key": "stack.iceberg",
+          "edge_type": "deployed_with"
+        },
+        {
+          "source_fact_key": "deployment.dbt_ci",
+          "target_fact_key": "stack.ingest_stream",
+          "edge_type": "deployed_with"
+        },
+        {
+          "source_fact_key": "deployment.multi_az",
+          "target_fact_key": "stack.quality",
+          "edge_type": "deployed_with"
+        },
+        {
+          "source_fact_key": "deployment.read_replica_bi",
+          "target_fact_key": "stack.schedule_sla",
+          "edge_type": "deployed_with"
+        },
+        {
+          "source_fact_key": "deployment.secrets_rotation",
+          "target_fact_key": "stack.catalog_glue",
+          "edge_type": "deployed_with"
+        },
+        {
+          "source_fact_key": "feature.access_rbac",
+          "target_fact_key": "test.data_privacy",
+          "edge_type": "tested_by"
+        },
+        {
+          "source_fact_key": "feature.anomaly_detection",
+          "target_fact_key": "test.dbt_unit",
+          "edge_type": "tested_by"
+        },
+        {
+          "source_fact_key": "feature.column_lineage",
+          "target_fact_key": "test.disaster_recovery",
+          "edge_type": "tested_by"
+        },
+        {
+          "source_fact_key": "feature.cost_attribution",
+          "target_fact_key": "test.lineage_completeness",
+          "edge_type": "tested_by"
+        },
+        {
+          "source_fact_key": "feature.cost_chargeback",
+          "target_fact_key": "test.pipeline_smoke",
+          "edge_type": "tested_by"
+        },
+        {
+          "source_fact_key": "feature.cross_region_copy",
+          "target_fact_key": "test.reconciliation_core",
+          "edge_type": "tested_by"
+        },
+        {
+          "source_fact_key": "feature.daily_mart_refresh",
+          "target_fact_key": "test.schema_drift",
+          "edge_type": "tested_by"
+        },
+        {
+          "source_fact_key": "feature.sample_pii",
+          "target_fact_key": "decision.backfill_policy",
+          "edge_type": "implements"
+        },
+        {
+          "source_fact_key": "feature.seed_data",
+          "target_fact_key": "decision.idempotency_dag",
+          "edge_type": "implements"
+        },
+        {
+          "source_fact_key": "feature.snapshot_scd2",
+          "target_fact_key": "decision.lineage_pii",
+          "edge_type": "implements"
+        },
+        {
+          "source_fact_key": "feature.streaming_agg",
+          "target_fact_key": "decision.medallion",
+          "edge_type": "implements"
+        },
+        {
+          "source_fact_key": "feature.time_travel",
+          "target_fact_key": "decision.partitioning",
+          "edge_type": "implements"
+        },
+        {
+          "source_fact_key": "migration.kafka_cluster",
+          "target_fact_key": "stack.compute_spark",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "migration.legacy_oracle",
+          "target_fact_key": "stack.cost",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "monitoring.cost_anomaly",
+          "target_fact_key": "stack.elt_tool",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "monitoring.dag_duration_trend",
+          "target_fact_key": "stack.iceberg",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "monitoring.data_freshness",
+          "target_fact_key": "stack.ingest_batch",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "monitoring.kafka_lag",
+          "target_fact_key": "stack.ingest_stream",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "research.p3.baseline.1",
+          "target_fact_key": "api.dbt.artifacts.fetch",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "research.p3.baseline.1",
+          "target_fact_key": "research.p3.edges.justification.1",
+          "edge_type": "related_to"
+        }
+      ]
+    },
+    {
+      "slug": "paper3_saas",
+      "project_id": "cdc4e20b-5c49-4feb-aafb-eca3b5157ae2",
+      "facts": [
+        {
+          "key": "api.v1.alerts.create",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /v1/alerts — create alert rule with channels."
+        },
+        {
+          "key": "api.v1.audit.list",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /v1/audit — paginated audit events with filters."
+        },
+        {
+          "key": "api.v1.auth.session",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /v1/auth/session/refresh — rotate refresh token."
+        },
+        {
+          "key": "api.v1.billing.usage",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /v1/billing/usage — current period usage vs plan limits."
+        },
+        {
+          "key": "api.v1.dashboards.create",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /v1/dashboards — create dashboard from template or blank."
+        },
+        {
+          "key": "api.v1.dashboards.list",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /v1/dashboards — list dashboards for workspace."
+        },
+        {
+          "key": "api.v1.datasets.list",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /v1/datasets — curated datasets available to workspace."
+        },
+        {
+          "key": "api.v1.datasets.preview",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /v1/datasets/{id}/preview — sample rows and schema."
+        },
+        {
+          "key": "api.v1.exports.status",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /v1/exports/{job_id} — status and download URL when ready."
+        },
+        {
+          "key": "api.v1.flags.evaluate",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /v1/flags/evaluate — batch flag evaluation for user context."
+        },
+        {
+          "key": "api.v1.health",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /v1/health — liveness for load balancers."
+        },
+        {
+          "key": "api.v1.integrations.slack",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /v1/integrations/slack/oauth — connect Slack workspace."
+        },
+        {
+          "key": "api.v1.metrics.export",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /v1/metrics/export — async export job; poll job status."
+        },
+        {
+          "key": "api.v1.metrics.query",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /v1/metrics/query — query time-series with filters and granularity."
+        },
+        {
+          "key": "api.v1.reports.schedule",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /v1/reports/schedule — cron expression and delivery list."
+        },
+        {
+          "key": "api.v1.sql.run",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /v1/sql/run — read-only query with row and time limits."
+        },
+        {
+          "key": "api.v1.tenants.settings",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "PATCH /v1/tenant/settings — workspace name, branding, retention."
+        },
+        {
+          "key": "api.v1.users.invite",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /v1/users/invite — email invite with role assignment."
+        },
+        {
+          "key": "api.v1.version",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /v1/version — build sha and supported API versions."
+        },
+        {
+          "key": "api.v1.webhooks.register",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /v1/webhooks — register endpoint URL and event types."
+        },
+        {
+          "key": "constraint.access_review",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "Quarterly access review for admin roles; auto-revoke inactive 90d."
+        },
+        {
+          "key": "constraint.budget_infra",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "Monthly infra cap USD 18k until Series A; require approval to exceed."
+        },
+        {
+          "key": "constraint.data_residency",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "EU tenants data in eu-central-1; no replication outside region."
+        },
+        {
+          "key": "constraint.performance_api",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "p95 API latency under 300ms for standard queries at P50 load."
+        },
+        {
+          "key": "constraint.scope_integrations",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "No Salesforce integration in v1; HubSpot read-only optional."
+        },
+        {
+          "key": "constraint.security_headers",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "HSTS, CSP, and X-Frame-Options required on all web routes."
+        },
+        {
+          "key": "constraint.team_size",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "Engineering team capped at 12 FTE for 2026; contractor budget 20%."
+        },
+        {
+          "key": "constraint.third_party",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "New vendor review required; no sub-processors without DPA."
+        },
+        {
+          "key": "constraint.timeline_mvp",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "MVP GA target 2026-06-30; beta starts 2026-04-01."
+        },
+        {
+          "key": "constraint.uptime",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "99.9% API SLO; planned maintenance max 4h per quarter with notice."
+        },
+        {
+          "key": "decision.api_versioning",
+          "kind": "decision",
+          "tier": 1,
+          "body": "URL path versioning /v1, /v2; deprecation headers and 6-month sunset."
+        },
+        {
+          "key": "decision.billing_meters",
+          "kind": "decision",
+          "tier": 1,
+          "body": "Bill on active seats + monthly tracked events over included quota."
+        },
+        {
+          "key": "decision.compliance",
+          "kind": "decision",
+          "tier": 1,
+          "body": "SOC2 Type I in progress; GDPR DPA template; HIPAA not targeted."
+        },
+        {
+          "key": "decision.data_retention",
+          "kind": "decision",
+          "tier": 1,
+          "body": "Hot 90d in OLTP; cold archive to R2 with 7-year option for enterprise."
+        },
+        {
+          "key": "decision.export_format",
+          "kind": "decision",
+          "tier": 1,
+          "body": "Default CSV and Parquet; Excel only on Enterprise plan."
+        },
+        {
+          "key": "decision.feature_flags",
+          "kind": "decision",
+          "tier": 1,
+          "body": "PostHog flags; kill switches for risky releases; no client-side secrets."
+        },
+        {
+          "key": "decision.localization",
+          "kind": "decision",
+          "tier": 1,
+          "body": "EN first; i18n framework ready; DE and FR by Q3."
+        },
+        {
+          "key": "decision.mobile",
+          "kind": "decision",
+          "tier": 1,
+          "body": "Responsive web only for 2026; native apps out of scope."
+        },
+        {
+          "key": "decision.multi_tenancy",
+          "kind": "decision",
+          "tier": 1,
+          "body": "Row-level tenancy via tenant_id on all tenant-scoped tables; no schema-per-tenant."
+        },
+        {
+          "key": "decision.pii_handling",
+          "kind": "decision",
+          "tier": 1,
+          "body": "Classify columns; mask in logs; DSR export and delete workflows."
+        },
+        {
+          "key": "decision.realtime",
+          "kind": "decision",
+          "tier": 1,
+          "body": "SSE for dashboard tiles; WebSockets only for collaborative editing (future)."
+        },
+        {
+          "key": "decision.sla",
+          "kind": "decision",
+          "tier": 1,
+          "body": "99.9% API monthly; status page; incident comms within 30 minutes."
+        },
+        {
+          "key": "deployment.api",
+          "kind": "deployment",
+          "tier": 1,
+          "body": "Fly.io machines in ord and fra; autoscale on CPU and request rate."
+        },
+        {
+          "key": "deployment.feature_envs",
+          "kind": "deployment",
+          "tier": 1,
+          "body": "Ephemeral env per PR with seeded demo data."
+        },
+        {
+          "key": "deployment.migrations",
+          "kind": "deployment",
+          "tier": 1,
+          "body": "Supabase migration pipeline; expand/contract for zero-downtime."
+        },
+        {
+          "key": "deployment.web",
+          "kind": "deployment",
+          "tier": 1,
+          "body": "Vercel production + preview; protected main branch; canary 10% on API."
+        },
+        {
+          "key": "feature.alerts",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Threshold and anomaly alerts with Slack and email channels."
+        },
+        {
+          "key": "feature.api_public",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Public REST API with scoped API keys and per-key rate limits."
+        },
+        {
+          "key": "feature.audit_log",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Immutable audit trail for admin actions and data exports."
+        },
+        {
+          "key": "feature.billing_portal",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Self-serve plan changes, invoices, and payment methods via Stripe portal."
+        },
+        {
+          "key": "feature.changelog",
+          "kind": "feature",
+          "tier": 1,
+          "body": "In-app changelog and opt-in beta features per workspace."
+        },
+        {
+          "key": "feature.dashboard",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Configurable analytics dashboard with saved views and sharing."
+        },
+        {
+          "key": "feature.embed",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Signed embed tokens for customer-facing charts in partner portals."
+        },
+        {
+          "key": "feature.goals",
+          "kind": "feature",
+          "tier": 1,
+          "body": "OKR-style goals linked to metrics and weekly check-ins."
+        },
+        {
+          "key": "feature.import_wizard",
+          "kind": "feature",
+          "tier": 1,
+          "body": "CSV and warehouse connectors with column mapping and validation."
+        },
+        {
+          "key": "feature.mobile_pwa",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Installable PWA with offline cached list views."
+        },
+        {
+          "key": "feature.rbac",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Roles: Owner, Admin, Analyst, Viewer; custom roles on Enterprise."
+        },
+        {
+          "key": "feature.reports",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Scheduled PDF and email reports with filters and drill-down links."
+        },
+        {
+          "key": "feature.sandbox",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Isolated sandbox project for API integration testing."
+        },
+        {
+          "key": "feature.search",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Global search across dashboards, reports, and documentation."
+        },
+        {
+          "key": "feature.sql_console",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Read-only SQL against curated datasets for power users."
+        },
+        {
+          "key": "feature.sso",
+          "kind": "feature",
+          "tier": 1,
+          "body": "SAML SSO with IdP metadata upload and JIT provisioning."
+        },
+        {
+          "key": "feature.teams",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Workspace teams with inherited permissions and shared assets."
+        },
+        {
+          "key": "feature.webhooks",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Outbound webhooks with signing secret, retries, and dead-letter queue."
+        },
+        {
+          "key": "migration.auth_cutover",
+          "kind": "migration",
+          "tier": 1,
+          "body": "Dual-run JWT validation during auth provider migration window."
+        },
+        {
+          "key": "migration.legacy_import",
+          "kind": "migration",
+          "tier": 1,
+          "body": "One-time import tool from competitor CSV exports; idempotent keys."
+        },
+        {
+          "key": "monitoring.error_budget",
+          "kind": "monitoring",
+          "tier": 1,
+          "body": "Monthly error budget policy; freeze features if exhausted."
+        },
+        {
+          "key": "monitoring.oncall",
+          "kind": "monitoring",
+          "tier": 1,
+          "body": "PagerDuty rotation; runbooks in Notion; blameless postmortems."
+        },
+        {
+          "key": "monitoring.slo_dashboard",
+          "kind": "monitoring",
+          "tier": 1,
+          "body": "Grafana dashboard for golden signals and burn rates."
+        },
+        {
+          "key": "research.p3.baseline.2",
+          "kind": "decision",
+          "tier": 1,
+          "body": "Baseline snapshot: 90 facts, kinds: api_endpoint=20, constraint=10, decision=12, deployment=4, feature=18, migration=2, monitoring=3, stack=15, test=6, pre-existing conflicts resolved: 0"
+        },
+        {
+          "key": "research.p3.edges.justification.2",
+          "kind": "decision",
+          "tier": 1,
+          "body": "api.v1.alerts.create --communicates_with--> stack.analytics_product: api_endpoint linked to corpus hub | api.v1.audit.list --communicates_with--> stack.auth: api_endpoint linked to corpus hub | api.v1.auth.session --communicates_with--> stack.backend: api_endpoint linked to corpus hub | api.v1.billing.usage --communicates_with--> stack.cache: api_endpoint linked to corpus hub | api.v1.dashboards.create --communicates_with--> stack.ci_cd: api_endpoint linked to corpus hub | api.v1.dashboards.list --communicates_with--> stack.database: api_endpoint linked to corpus hub | api.v1.datasets.list --communicates_with--> stack.email: api_endpoint linked to corpus hub | api.v1.datasets.preview --communicates_with--> stack.frontend: api_endpoint linked to corpus hub | api.v1.exports.status --communicates_with--> stack.hosting: api_endpoint linked to corpus hub | api.v1.flags.evaluate --communicates_with--> stack.observability: api_endpoint linked to corpus hub | api.v1.health --communicates_with--> stack.payments: api_endpoint linked to corpus hub | api.v1.integrations.slack --communicates_with--> stack.queue: api_endpoint linked to corpus hub | api.v1.metrics.export --communicates_with--> stack.search: api_endpoint linked to corpus hub | api.v1.metrics.query --communicates_with--> stack.secrets: api_endpoint linked to corpus hub | api.v1.reports.schedule --communicates_with--> stack.storage: api_endpoint linked to corpus hub | api.v1.sql.run --communicates_with--> stack.analytics_product: api_endpoint linked to corpus hub | api.v1.tenants.settings --communicates_with--> stack.auth: api_endpoint linked to corpus hub | api.v1.users.invite --communicates_with--> stack.backend: api_endpoint linked to corpus hub | api.v1.version --communicates_with--> stack.cache: api_endpoint linked to corpus hub | api.v1.webhooks.register --communicates_with--> stack.ci_cd: api_endpoint linked to corpus hub | constraint.access_review --related_to--> feature.alerts: constraint linked to corpus hub | constraint.budget_infra --related_to--> feature.api_public: constraint linked to corpus hub | constraint.data_residency --related_to--> feature.audit_log: constraint linked to corpus hub | constraint.performance_api --related_to--> feature.billing_portal: constraint linked to corpus hub | constraint.scope_integrations --related_to--> feature.changelog: constraint linked to corpus hub | constraint.security_headers --related_to--> feature.dashboard: constraint linked to corpus hub | constraint.team_size --related_to--> feature.embed: constraint linked to corpus hub | constraint.third_party --related_to--> feature.goals: constraint linked to corpus hub | constraint.timeline_mvp --related_to--> feature.import_wizard: constraint linked to corpus hub | constraint.uptime --related_to--> feature.mobile_pwa: constraint linked to corpus hub | decision.api_versioning --depends_on--> stack.database: decision linked to corpus hub | decision.billing_meters --depends_on--> stack.email: decision linked to corpus hub | decision.compliance --depends_on--> stack.frontend: decision linked to corpus hub | decision.data_retention --depends_on--> stack.hosting: decision linked to corpus hub | decision.export_format --depends_on--> stack.observability: decision linked to corpus hub | decision.feature_flags --depends_on--> stack.payments: decision linked to corpus hub | decision.localization --depends_on--> stack.queue: decision linked to corpus hub | decision.mobile --depends_on--> stack.search: decision linked to corpus hub | decision.multi_tenancy --depends_on--> stack.secrets: decision linked to corpus hub | decision.pii_handling --depends_on--> stack.storage: decision linked to corpus hub | decision.realtime --depends_on--> stack.analytics_product: decision linked to corpus hub | decision.sla --depends_on--> stack.auth: decision linked to corpus hub | deployment.api --deployed_with--> stack.backend: deployment linked to corpus hub | deployment.feature_envs --deployed_with--> stack.cache: deployment linked to corpus hub | deployment.migrations --deployed_with--> stack.ci_cd: deployment linked to corpus hub | deployment.web --deployed_with--> stack.database: deployment linked to corpus hub | feature.rbac --implements--> decision.api_versioning: feature linked to corpus hub | feature.reports --implements--> decision.billing_meters: feature linked to corpus hub | feature.sandbox --implements--> decision.compliance: feature linked to corpus hub | feature.search --implements--> decision.data_retention: feature linked to corpus hub | feature.sql_console --implements--> decision.export_format: feature linked to corpus hub | feature.sso --implements--> decision.feature_flags: feature linked to corpus hub | feature.teams --implements--> decision.localization: feature linked to corpus hub | feature.webhooks --implements--> decision.mobile: feature linked to corpus hub | migration.auth_cutover --related_to--> stack.email: migration linked to corpus hub | migration.legacy_import --related_to--> stack.frontend: migration linked to corpus hub | monitoring.error_budget --related_to--> stack.hosting: monitoring linked to corpus hub | monitoring.oncall --related_to--> stack.observability: monitoring linked to corpus hub | monitoring.slo_dashboard --related_to--> stack.payments: monitoring linked to corpus hub | feature.alerts --tested_by--> test.accessibility: test linked to corpus hub | feature.api_public --tested_by--> test.contract: test linked to corpus hub | feature.audit_log --tested_by--> test.e2e: test linked to corpus hub | feature.billing_portal --tested_by--> test.load: test linked to corpus hub | feature.changelog --tested_by--> test.security: test linked to corpus hub | feature.dashboard --tested_by--> test.unit: test linked to corpus hub | research.p3.baseline.2 --related_to--> api.v1.alerts.create: orphan connectivity pass"
+        },
+        {
+          "key": "stack.analytics_product",
+          "kind": "stack",
+          "tier": 1,
+          "body": "PostHog self-hosted EU for product analytics and feature flags."
+        },
+        {
+          "key": "stack.auth",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Supabase Auth with JWT, optional SSO via SAML for enterprise tenants."
+        },
+        {
+          "key": "stack.backend",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Node.js 22 LTS, Fastify 5, Zod validation, Pino logging."
+        },
+        {
+          "key": "stack.cache",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Redis 7 for session cache, rate-limit counters, and job dedupe keys."
+        },
+        {
+          "key": "stack.ci_cd",
+          "kind": "stack",
+          "tier": 1,
+          "body": "GitHub Actions: lint, test, typecheck, preview deploys, production promote."
+        },
+        {
+          "key": "stack.database",
+          "kind": "stack",
+          "tier": 1,
+          "body": "PostgreSQL 16 on Supabase, pgvector for semantic search on help docs."
+        },
+        {
+          "key": "stack.email",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Resend for transactional; Postmark backup for critical billing emails."
+        },
+        {
+          "key": "stack.frontend",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Next.js 15 App Router, React 19, TypeScript strict, Tailwind CSS 4, TanStack Query."
+        },
+        {
+          "key": "stack.hosting",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Vercel for web, Fly.io for API workers, Cloudflare for CDN and WAF."
+        },
+        {
+          "key": "stack.observability",
+          "kind": "stack",
+          "tier": 1,
+          "body": "OpenTelemetry traces to Honeycomb; metrics in Grafana Cloud."
+        },
+        {
+          "key": "stack.payments",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Stripe Billing: subscriptions, usage meters, customer portal."
+        },
+        {
+          "key": "stack.queue",
+          "kind": "stack",
+          "tier": 1,
+          "body": "BullMQ on Redis for async exports, webhook delivery, and digest emails."
+        },
+        {
+          "key": "stack.search",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Algolia for in-app doc search; Postgres full-text for internal admin."
+        },
+        {
+          "key": "stack.secrets",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Doppler for env sync; no secrets in repo; rotation quarterly."
+        },
+        {
+          "key": "stack.storage",
+          "kind": "stack",
+          "tier": 1,
+          "body": "S3-compatible R2 for user-uploaded CSV previews and export archives."
+        },
+        {
+          "key": "test.accessibility",
+          "kind": "test",
+          "tier": 1,
+          "body": "axe-core in CI on main flows; WCAG 2.1 AA target."
+        },
+        {
+          "key": "test.contract",
+          "kind": "test",
+          "tier": 1,
+          "body": "Pact consumer tests for public API; provider verification in CI."
+        },
+        {
+          "key": "test.e2e",
+          "kind": "test",
+          "tier": 1,
+          "body": "Playwright smoke on staging for login, dashboard load, export flow."
+        },
+        {
+          "key": "test.load",
+          "kind": "test",
+          "tier": 1,
+          "body": "k6 scripts for read-heavy paths before major marketing launches."
+        },
+        {
+          "key": "test.security",
+          "kind": "test",
+          "tier": 1,
+          "body": "Semgrep + npm audit in CI; annual pentest."
+        },
+        {
+          "key": "test.unit",
+          "kind": "test",
+          "tier": 1,
+          "body": "Vitest for frontend and backend units; 80% line coverage gate on critical paths."
+        }
+      ],
+      "edges": [
+        {
+          "source_fact_key": "api.v1.alerts.create",
+          "target_fact_key": "stack.analytics_product",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.v1.audit.list",
+          "target_fact_key": "stack.auth",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.v1.auth.session",
+          "target_fact_key": "stack.backend",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.v1.billing.usage",
+          "target_fact_key": "stack.cache",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.v1.dashboards.create",
+          "target_fact_key": "stack.ci_cd",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.v1.dashboards.list",
+          "target_fact_key": "stack.database",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.v1.datasets.list",
+          "target_fact_key": "stack.email",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.v1.datasets.preview",
+          "target_fact_key": "stack.frontend",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.v1.exports.status",
+          "target_fact_key": "stack.hosting",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.v1.flags.evaluate",
+          "target_fact_key": "stack.observability",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.v1.health",
+          "target_fact_key": "stack.payments",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.v1.integrations.slack",
+          "target_fact_key": "stack.queue",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.v1.metrics.export",
+          "target_fact_key": "stack.search",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.v1.metrics.query",
+          "target_fact_key": "stack.secrets",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.v1.reports.schedule",
+          "target_fact_key": "stack.storage",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.v1.sql.run",
+          "target_fact_key": "stack.analytics_product",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.v1.tenants.settings",
+          "target_fact_key": "stack.auth",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.v1.users.invite",
+          "target_fact_key": "stack.backend",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.v1.version",
+          "target_fact_key": "stack.cache",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.v1.webhooks.register",
+          "target_fact_key": "stack.ci_cd",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "constraint.access_review",
+          "target_fact_key": "feature.alerts",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.budget_infra",
+          "target_fact_key": "feature.api_public",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.data_residency",
+          "target_fact_key": "feature.audit_log",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.performance_api",
+          "target_fact_key": "feature.billing_portal",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.scope_integrations",
+          "target_fact_key": "feature.changelog",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.security_headers",
+          "target_fact_key": "feature.dashboard",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.team_size",
+          "target_fact_key": "feature.embed",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.third_party",
+          "target_fact_key": "feature.goals",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.timeline_mvp",
+          "target_fact_key": "feature.import_wizard",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.uptime",
+          "target_fact_key": "feature.mobile_pwa",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "decision.api_versioning",
+          "target_fact_key": "stack.database",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.billing_meters",
+          "target_fact_key": "stack.email",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.compliance",
+          "target_fact_key": "stack.frontend",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.data_retention",
+          "target_fact_key": "stack.hosting",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.export_format",
+          "target_fact_key": "stack.observability",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.feature_flags",
+          "target_fact_key": "stack.payments",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.localization",
+          "target_fact_key": "stack.queue",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.mobile",
+          "target_fact_key": "stack.search",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.multi_tenancy",
+          "target_fact_key": "stack.secrets",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.pii_handling",
+          "target_fact_key": "stack.storage",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.realtime",
+          "target_fact_key": "stack.analytics_product",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.sla",
+          "target_fact_key": "stack.auth",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "deployment.api",
+          "target_fact_key": "stack.backend",
+          "edge_type": "deployed_with"
+        },
+        {
+          "source_fact_key": "deployment.feature_envs",
+          "target_fact_key": "stack.cache",
+          "edge_type": "deployed_with"
+        },
+        {
+          "source_fact_key": "deployment.migrations",
+          "target_fact_key": "stack.ci_cd",
+          "edge_type": "deployed_with"
+        },
+        {
+          "source_fact_key": "deployment.web",
+          "target_fact_key": "stack.database",
+          "edge_type": "deployed_with"
+        },
+        {
+          "source_fact_key": "feature.alerts",
+          "target_fact_key": "test.accessibility",
+          "edge_type": "tested_by"
+        },
+        {
+          "source_fact_key": "feature.api_public",
+          "target_fact_key": "test.contract",
+          "edge_type": "tested_by"
+        },
+        {
+          "source_fact_key": "feature.audit_log",
+          "target_fact_key": "test.e2e",
+          "edge_type": "tested_by"
+        },
+        {
+          "source_fact_key": "feature.billing_portal",
+          "target_fact_key": "test.load",
+          "edge_type": "tested_by"
+        },
+        {
+          "source_fact_key": "feature.changelog",
+          "target_fact_key": "test.security",
+          "edge_type": "tested_by"
+        },
+        {
+          "source_fact_key": "feature.dashboard",
+          "target_fact_key": "test.unit",
+          "edge_type": "tested_by"
+        },
+        {
+          "source_fact_key": "feature.rbac",
+          "target_fact_key": "decision.api_versioning",
+          "edge_type": "implements"
+        },
+        {
+          "source_fact_key": "feature.reports",
+          "target_fact_key": "decision.billing_meters",
+          "edge_type": "implements"
+        },
+        {
+          "source_fact_key": "feature.sandbox",
+          "target_fact_key": "decision.compliance",
+          "edge_type": "implements"
+        },
+        {
+          "source_fact_key": "feature.search",
+          "target_fact_key": "decision.data_retention",
+          "edge_type": "implements"
+        },
+        {
+          "source_fact_key": "feature.sql_console",
+          "target_fact_key": "decision.export_format",
+          "edge_type": "implements"
+        },
+        {
+          "source_fact_key": "feature.sso",
+          "target_fact_key": "decision.feature_flags",
+          "edge_type": "implements"
+        },
+        {
+          "source_fact_key": "feature.teams",
+          "target_fact_key": "decision.localization",
+          "edge_type": "implements"
+        },
+        {
+          "source_fact_key": "feature.webhooks",
+          "target_fact_key": "decision.mobile",
+          "edge_type": "implements"
+        },
+        {
+          "source_fact_key": "migration.auth_cutover",
+          "target_fact_key": "stack.email",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "migration.legacy_import",
+          "target_fact_key": "stack.frontend",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "monitoring.error_budget",
+          "target_fact_key": "stack.hosting",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "monitoring.oncall",
+          "target_fact_key": "stack.observability",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "monitoring.slo_dashboard",
+          "target_fact_key": "stack.payments",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "research.p3.baseline.2",
+          "target_fact_key": "api.v1.alerts.create",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "research.p3.baseline.2",
+          "target_fact_key": "research.p3.edges.justification.2",
+          "edge_type": "related_to"
+        }
+      ]
+    },
+    {
+      "slug": "paper3_api_service",
+      "project_id": "aa75eda0-4205-44ef-b692-5248ff0eb956",
+      "facts": [
+        {
+          "key": "api.admin.clients.list",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /admin/v1/clients — list OAuth clients (admin only)."
+        },
+        {
+          "key": "api.admin.clients.rotate",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /admin/v1/clients/{id}/rotate-secret — rotate client secret."
+        },
+        {
+          "key": "api.edge.health",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /healthz — liveness; no auth."
+        },
+        {
+          "key": "api.edge.ready",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /readyz — checks DB, Redis, NATS connectivity."
+        },
+        {
+          "key": "api.internal.accounts.create",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /internal/v1/accounts — provision tenant; idempotent."
+        },
+        {
+          "key": "api.internal.tokens.issue",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /internal/v1/tokens — issue scoped token for worker."
+        },
+        {
+          "key": "api.metrics.prometheus",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /metrics — Prometheus scrape endpoint internal only."
+        },
+        {
+          "key": "api.oas.spec",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /v1/openapi.json — machine-readable spec."
+        },
+        {
+          "key": "api.oas.ui",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /docs — Swagger UI behind auth in non-prod."
+        },
+        {
+          "key": "api.public.v1.batch.status",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /v1/batch/{job_id} — job status and result URLs."
+        },
+        {
+          "key": "api.public.v1.batch.submit",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /v1/batch — submit batch job; returns job_id."
+        },
+        {
+          "key": "api.public.v1.bulk.head",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "HEAD /v1/resources — count-only for sync clients."
+        },
+        {
+          "key": "api.public.v1.metrics_summary",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /v1/metrics/summary — weekly usage rollup for dashboards."
+        },
+        {
+          "key": "api.public.v1.quota",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /v1/quota — remaining quota for caller."
+        },
+        {
+          "key": "api.public.v1.resources",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /v1/resources — list resources for caller scope."
+        },
+        {
+          "key": "api.public.v1.resources.delete",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "DELETE /v1/resources/{id} — soft delete; tombstone header."
+        },
+        {
+          "key": "api.public.v1.resources.id",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /v1/resources/{id} — fetch single resource."
+        },
+        {
+          "key": "api.public.v1.resources.patch",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "PATCH /v1/resources/{id} — partial update with ETag."
+        },
+        {
+          "key": "api.public.v1.resources.post",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /v1/resources — create resource; returns 201 + Location."
+        },
+        {
+          "key": "api.public.v1.usage",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /v1/usage/events — ingest usage events (batched)."
+        },
+        {
+          "key": "api.webhooks.deliveries",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "GET /v1/webhooks/deliveries — list recent delivery attempts."
+        },
+        {
+          "key": "api.webhooks.retry",
+          "kind": "api_endpoint",
+          "tier": 1,
+          "body": "POST /v1/webhooks/deliveries/{id}/retry — manual retry."
+        },
+        {
+          "key": "constraint.api_deprecation",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "No more than 3 active deprecated paths per major version."
+        },
+        {
+          "key": "constraint.backup_rpo",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "RPO 15 minutes for primary DB; daily full backup retained 30d."
+        },
+        {
+          "key": "constraint.concurrent_requests",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "Default 1000 RPS per client; burst 2000."
+        },
+        {
+          "key": "constraint.data_classification",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "No secret material in query strings or access logs."
+        },
+        {
+          "key": "constraint.dependency_updates",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "Critical CVE patch within 7 days; others monthly."
+        },
+        {
+          "key": "constraint.encryption_at_rest",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "All disks and object storage encrypted; CMK optional enterprise."
+        },
+        {
+          "key": "constraint.latency_budget",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "p99 internal RPC under 50ms between zone-local services."
+        },
+        {
+          "key": "constraint.log_retention",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "Access logs 400d; debug logs 14d in non-prod only."
+        },
+        {
+          "key": "constraint.oncall_api",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "Critical API team 24/7 during launch month only."
+        },
+        {
+          "key": "constraint.payload_max",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "Max request body 10MB unless signed multipart upload."
+        },
+        {
+          "key": "constraint.region_failover",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "Runbook for regional failover; RTO target 4 hours."
+        },
+        {
+          "key": "constraint.synthetic_staging",
+          "kind": "constraint",
+          "tier": 1,
+          "body": "Staging uses synthetic fixtures only; no production PII."
+        },
+        {
+          "key": "decision.auth",
+          "kind": "decision",
+          "tier": 1,
+          "body": "OAuth2 client credentials for M2M; JWT for user delegation with audience checks."
+        },
+        {
+          "key": "decision.breaking_changes",
+          "kind": "decision",
+          "tier": 1,
+          "body": "Deprecation calendar in changelog; min 90d notice for removals."
+        },
+        {
+          "key": "decision.cors",
+          "kind": "decision",
+          "tier": 1,
+          "body": "Strict allowlist of origins per client; no wildcard in production."
+        },
+        {
+          "key": "decision.error_format",
+          "kind": "decision",
+          "tier": 1,
+          "body": "RFC 7807 problem+json with stable type URIs and correlation id."
+        },
+        {
+          "key": "decision.idempotency",
+          "kind": "decision",
+          "tier": 1,
+          "body": "All mutating endpoints accept Idempotency-Key; 24h dedupe window."
+        },
+        {
+          "key": "decision.pagination",
+          "kind": "decision",
+          "tier": 1,
+          "body": "Cursor-based pagination for large collections; max page size 100."
+        },
+        {
+          "key": "decision.rate_limits",
+          "kind": "decision",
+          "tier": 1,
+          "body": "Per client_id and per IP; burst + sustained token bucket."
+        },
+        {
+          "key": "decision.synchronous_timeout",
+          "kind": "decision",
+          "tier": 1,
+          "body": "Hard 30s gateway timeout; async pattern for long jobs."
+        },
+        {
+          "key": "decision.versioning",
+          "kind": "decision",
+          "tier": 1,
+          "body": "Header Accept-Version optional; path /v1 default for 12 months."
+        },
+        {
+          "key": "decision.webhook_signing",
+          "kind": "decision",
+          "tier": 1,
+          "body": "HMAC-SHA256 on webhook bodies; clock skew window 5 minutes."
+        },
+        {
+          "key": "deployment.blue_green",
+          "kind": "deployment",
+          "tier": 1,
+          "body": "Blue/green for gateway config; gradual pod rollouts for services."
+        },
+        {
+          "key": "deployment.canary_analysis",
+          "kind": "deployment",
+          "tier": 1,
+          "body": "Automated metric comparison before full promotion."
+        },
+        {
+          "key": "deployment.cost_cap",
+          "kind": "deployment",
+          "tier": 1,
+          "body": "Monthly GKE cost alert at 85% of budget."
+        },
+        {
+          "key": "deployment.migrations_job",
+          "kind": "deployment",
+          "tier": 1,
+          "body": "Kubernetes Job for goose migrations with advisory locks."
+        },
+        {
+          "key": "deployment.network_policy",
+          "kind": "deployment",
+          "tier": 1,
+          "body": "Default deny K8s network policy; explicit allow per namespace."
+        },
+        {
+          "key": "feature.admin_audit",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Admin API for key lifecycle and security event replay."
+        },
+        {
+          "key": "feature.api_keys",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Scoped API keys with rotation, last-used timestamp, and parent client."
+        },
+        {
+          "key": "feature.batch_jobs",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Batch job API with chunked uploads and completion webhooks."
+        },
+        {
+          "key": "feature.circuit_breaker",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Per-dependency circuit breakers with half-open probes."
+        },
+        {
+          "key": "feature.client_sdks",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Generated TypeScript and Go SDKs from OpenAPI with semver."
+        },
+        {
+          "key": "feature.dead_letter",
+          "kind": "feature",
+          "tier": 1,
+          "body": "DLQ topic for failed consumer messages with replay tooling."
+        },
+        {
+          "key": "feature.graceful_degradation",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Read path fallback to cache when primary DB unhealthy."
+        },
+        {
+          "key": "feature.health_aggregated",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Aggregated health checks across dependencies for synthetic probes."
+        },
+        {
+          "key": "feature.ip_allowlist",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Optional IP allowlists per API client for enterprise."
+        },
+        {
+          "key": "feature.openapi_diff",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Breaking change detection between OpenAPI versions in CI."
+        },
+        {
+          "key": "feature.quota_service",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Central quota service enforcing plan limits across edge and core."
+        },
+        {
+          "key": "feature.request_signing",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Optional HMAC request signing for high-security partners."
+        },
+        {
+          "key": "feature.request_validation",
+          "kind": "feature",
+          "tier": 1,
+          "body": "JSON Schema validation at gateway and service boundary."
+        },
+        {
+          "key": "feature.retry_policy",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Exponential backoff with jitter; max 5 retries for 5xx."
+        },
+        {
+          "key": "feature.schema_registry",
+          "kind": "feature",
+          "tier": 1,
+          "body": "AsyncAPI and OpenAPI registry with diff and compatibility checks."
+        },
+        {
+          "key": "feature.shadow_mode",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Shadow traffic to new versions without affecting billing."
+        },
+        {
+          "key": "feature.traffic_split",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Weighted routing between service versions for canary."
+        },
+        {
+          "key": "feature.usage_metering",
+          "kind": "feature",
+          "tier": 1,
+          "body": "Emitted usage events to billing pipeline with at-least-once delivery."
+        },
+        {
+          "key": "migration.dual_write",
+          "kind": "migration",
+          "tier": 1,
+          "body": "Dual-write window max 14 days during datastore migration."
+        },
+        {
+          "key": "migration.monolith_split",
+          "kind": "migration",
+          "tier": 1,
+          "body": "Strangler pattern: extract quota and auth to dedicated services."
+        },
+        {
+          "key": "monitoring.alert_routing",
+          "kind": "monitoring",
+          "tier": 1,
+          "body": "Severity-based routing to Slack vs PagerDuty."
+        },
+        {
+          "key": "monitoring.slo_api",
+          "kind": "monitoring",
+          "tier": 1,
+          "body": "99.95% availability SLO for public read endpoints."
+        },
+        {
+          "key": "monitoring.synthetic",
+          "kind": "monitoring",
+          "tier": 1,
+          "body": "Synthetic checks every 60s from three regions."
+        },
+        {
+          "key": "monitoring.trace_sampling",
+          "kind": "monitoring",
+          "tier": 1,
+          "body": "Tail-based sampling for error traces; 1% baseline happy path."
+        },
+        {
+          "key": "research.p3.baseline.3",
+          "kind": "decision",
+          "tier": 1,
+          "body": "Baseline snapshot: 94 facts, kinds: api_endpoint=22, constraint=12, decision=10, deployment=5, feature=18, migration=2, monitoring=4, stack=14, test=7, pre-existing conflicts resolved: 0"
+        },
+        {
+          "key": "research.p3.edges.justification.3",
+          "kind": "decision",
+          "tier": 1,
+          "body": "api.admin.clients.list --communicates_with--> stack.cache_api: api_endpoint linked to corpus hub | api.admin.clients.rotate --communicates_with--> stack.db: api_endpoint linked to corpus hub | api.edge.health --communicates_with--> stack.deploy: api_endpoint linked to corpus hub | api.edge.ready --communicates_with--> stack.docs_api: api_endpoint linked to corpus hub | api.internal.accounts.create --communicates_with--> stack.gateway: api_endpoint linked to corpus hub | api.internal.tokens.issue --communicates_with--> stack.iac: api_endpoint linked to corpus hub | api.metrics.prometheus --communicates_with--> stack.logging_structured: api_endpoint linked to corpus hub | api.oas.spec --communicates_with--> stack.messaging: api_endpoint linked to corpus hub | api.oas.ui --communicates_with--> stack.metrics_cardinality: api_endpoint linked to corpus hub | api.public.v1.batch.status --communicates_with--> stack.runtime: api_endpoint linked to corpus hub | api.public.v1.batch.submit --communicates_with--> stack.secrets_k8s: api_endpoint linked to corpus hub | api.public.v1.bulk.head --communicates_with--> stack.tls: api_endpoint linked to corpus hub | api.public.v1.metrics_summary --communicates_with--> stack.tracing: api_endpoint linked to corpus hub | api.public.v1.quota --communicates_with--> stack.waf: api_endpoint linked to corpus hub | api.public.v1.resources --communicates_with--> stack.cache_api: api_endpoint linked to corpus hub | api.public.v1.resources.delete --communicates_with--> stack.db: api_endpoint linked to corpus hub | api.public.v1.resources.id --communicates_with--> stack.deploy: api_endpoint linked to corpus hub | api.public.v1.resources.patch --communicates_with--> stack.docs_api: api_endpoint linked to corpus hub | api.public.v1.resources.post --communicates_with--> stack.gateway: api_endpoint linked to corpus hub | api.public.v1.usage --communicates_with--> stack.iac: api_endpoint linked to corpus hub | api.webhooks.deliveries --communicates_with--> stack.logging_structured: api_endpoint linked to corpus hub | api.webhooks.retry --communicates_with--> stack.messaging: api_endpoint linked to corpus hub | constraint.api_deprecation --related_to--> feature.admin_audit: constraint linked to corpus hub | constraint.backup_rpo --related_to--> feature.api_keys: constraint linked to corpus hub | constraint.concurrent_requests --related_to--> feature.batch_jobs: constraint linked to corpus hub | constraint.data_classification --related_to--> feature.circuit_breaker: constraint linked to corpus hub | constraint.dependency_updates --related_to--> feature.client_sdks: constraint linked to corpus hub | constraint.encryption_at_rest --related_to--> feature.dead_letter: constraint linked to corpus hub | constraint.latency_budget --related_to--> feature.graceful_degradation: constraint linked to corpus hub | constraint.log_retention --related_to--> feature.health_aggregated: constraint linked to corpus hub | constraint.oncall_api --related_to--> feature.ip_allowlist: constraint linked to corpus hub | constraint.payload_max --related_to--> feature.openapi_diff: constraint linked to corpus hub | constraint.region_failover --related_to--> feature.quota_service: constraint linked to corpus hub | constraint.synthetic_staging --related_to--> feature.request_signing: constraint linked to corpus hub | decision.auth --depends_on--> stack.metrics_cardinality: decision linked to corpus hub | decision.breaking_changes --depends_on--> stack.runtime: decision linked to corpus hub | decision.cors --depends_on--> stack.secrets_k8s: decision linked to corpus hub | decision.error_format --depends_on--> stack.tls: decision linked to corpus hub | decision.idempotency --depends_on--> stack.tracing: decision linked to corpus hub | decision.pagination --depends_on--> stack.waf: decision linked to corpus hub | decision.rate_limits --depends_on--> stack.cache_api: decision linked to corpus hub | decision.synchronous_timeout --depends_on--> stack.db: decision linked to corpus hub | decision.versioning --depends_on--> stack.deploy: decision linked to corpus hub | decision.webhook_signing --depends_on--> stack.docs_api: decision linked to corpus hub | deployment.blue_green --deployed_with--> stack.gateway: deployment linked to corpus hub | deployment.canary_analysis --deployed_with--> stack.iac: deployment linked to corpus hub | deployment.cost_cap --deployed_with--> stack.logging_structured: deployment linked to corpus hub | deployment.migrations_job --deployed_with--> stack.messaging: deployment linked to corpus hub | deployment.network_policy --deployed_with--> stack.metrics_cardinality: deployment linked to corpus hub | feature.request_validation --implements--> decision.auth: feature linked to corpus hub | feature.retry_policy --implements--> decision.breaking_changes: feature linked to corpus hub | feature.schema_registry --implements--> decision.cors: feature linked to corpus hub | feature.shadow_mode --implements--> decision.error_format: feature linked to corpus hub | feature.traffic_split --implements--> decision.idempotency: feature linked to corpus hub | feature.usage_metering --implements--> decision.pagination: feature linked to corpus hub | migration.dual_write --related_to--> stack.runtime: migration linked to corpus hub | migration.monolith_split --related_to--> stack.secrets_k8s: migration linked to corpus hub | monitoring.alert_routing --related_to--> stack.tls: monitoring linked to corpus hub | monitoring.slo_api --related_to--> stack.tracing: monitoring linked to corpus hub | monitoring.synthetic --related_to--> stack.waf: monitoring linked to corpus hub | monitoring.trace_sampling --related_to--> stack.cache_api: monitoring linked to corpus hub | feature.admin_audit --tested_by--> test.chaos: test linked to corpus hub | feature.api_keys --tested_by--> test.contract_public: test linked to corpus hub | feature.batch_jobs --tested_by--> test.fuzz_json: test linked to corpus hub | feature.circuit_breaker --tested_by--> test.integration: test linked to corpus hub | feature.client_sdks --tested_by--> test.load_gateway: test linked to corpus hub | feature.dead_letter --tested_by--> test.mutation_api: test linked to corpus hub | feature.graceful_degradation --tested_by--> test.tls_pinning: test linked to corpus hub | research.p3.baseline.3 --related_to--> api.admin.clients.list: orphan connectivity pass"
+        },
+        {
+          "key": "stack.cache_api",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Redis Cluster for idempotency keys and response caching."
+        },
+        {
+          "key": "stack.db",
+          "kind": "stack",
+          "tier": 1,
+          "body": "PostgreSQL 16 primary; read replicas for reporting aggregates."
+        },
+        {
+          "key": "stack.deploy",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Kubernetes on GKE Autopilot; Helm charts per service."
+        },
+        {
+          "key": "stack.docs_api",
+          "kind": "stack",
+          "tier": 1,
+          "body": "OpenAPI 3.1 generated from code; Redoc published per environment."
+        },
+        {
+          "key": "stack.gateway",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Kong Gateway for auth plugins, rate limiting, and request logging."
+        },
+        {
+          "key": "stack.iac",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Terraform for clusters, DNS, and shared infra modules."
+        },
+        {
+          "key": "stack.logging_structured",
+          "kind": "stack",
+          "tier": 1,
+          "body": "JSON logs with trace_id, span_id, tenant_id, client_id on every line."
+        },
+        {
+          "key": "stack.messaging",
+          "kind": "stack",
+          "tier": 1,
+          "body": "NATS JetStream for domain events and outbox pattern."
+        },
+        {
+          "key": "stack.metrics_cardinality",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Cardinality-limited custom metrics; high-card labels blocked at ingest."
+        },
+        {
+          "key": "stack.runtime",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Go 1.23 services; chi router; protobuf for internal RPC."
+        },
+        {
+          "key": "stack.secrets_k8s",
+          "kind": "stack",
+          "tier": 1,
+          "body": "External Secrets Operator syncing from GCP Secret Manager."
+        },
+        {
+          "key": "stack.tls",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Automatic cert rotation via cert-manager; TLS 1.3 only."
+        },
+        {
+          "key": "stack.tracing",
+          "kind": "stack",
+          "tier": 1,
+          "body": "OTel SDK; Tempo backend; trace_id in all structured logs."
+        },
+        {
+          "key": "stack.waf",
+          "kind": "stack",
+          "tier": 1,
+          "body": "Cloud Armor in front of ingress; geo blocking optional."
+        },
+        {
+          "key": "test.chaos",
+          "kind": "test",
+          "tier": 1,
+          "body": "Quarterly game day: kill random pod; verify recovery."
+        },
+        {
+          "key": "test.contract_public",
+          "kind": "test",
+          "tier": 1,
+          "body": "Contract tests against OpenAPI spec for top 20 routes."
+        },
+        {
+          "key": "test.fuzz_json",
+          "kind": "test",
+          "tier": 1,
+          "body": "Fuzzing for public JSON parsers with libFuzzer harness."
+        },
+        {
+          "key": "test.integration",
+          "kind": "test",
+          "tier": 1,
+          "body": "Testcontainers for Postgres and Redis in integration suite."
+        },
+        {
+          "key": "test.load_gateway",
+          "kind": "test",
+          "tier": 1,
+          "body": "Vegeta sustained load before Black Friday."
+        },
+        {
+          "key": "test.mutation_api",
+          "kind": "test",
+          "tier": 1,
+          "body": "Mutation testing on critical auth and billing handlers quarterly."
+        },
+        {
+          "key": "test.tls_pinning",
+          "kind": "test",
+          "tier": 1,
+          "body": "Integration tests verify cert chain for public endpoints."
+        }
+      ],
+      "edges": [
+        {
+          "source_fact_key": "api.admin.clients.list",
+          "target_fact_key": "stack.cache_api",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.admin.clients.rotate",
+          "target_fact_key": "stack.db",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.edge.health",
+          "target_fact_key": "stack.deploy",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.edge.ready",
+          "target_fact_key": "stack.docs_api",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.internal.accounts.create",
+          "target_fact_key": "stack.gateway",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.internal.tokens.issue",
+          "target_fact_key": "stack.iac",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.metrics.prometheus",
+          "target_fact_key": "stack.logging_structured",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.oas.spec",
+          "target_fact_key": "stack.messaging",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.oas.ui",
+          "target_fact_key": "stack.metrics_cardinality",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.public.v1.batch.status",
+          "target_fact_key": "stack.runtime",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.public.v1.batch.submit",
+          "target_fact_key": "stack.secrets_k8s",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.public.v1.bulk.head",
+          "target_fact_key": "stack.tls",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.public.v1.metrics_summary",
+          "target_fact_key": "stack.tracing",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.public.v1.quota",
+          "target_fact_key": "stack.waf",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.public.v1.resources",
+          "target_fact_key": "stack.cache_api",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.public.v1.resources.delete",
+          "target_fact_key": "stack.db",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.public.v1.resources.id",
+          "target_fact_key": "stack.deploy",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.public.v1.resources.patch",
+          "target_fact_key": "stack.docs_api",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.public.v1.resources.post",
+          "target_fact_key": "stack.gateway",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.public.v1.usage",
+          "target_fact_key": "stack.iac",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.webhooks.deliveries",
+          "target_fact_key": "stack.logging_structured",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "api.webhooks.retry",
+          "target_fact_key": "stack.messaging",
+          "edge_type": "communicates_with"
+        },
+        {
+          "source_fact_key": "constraint.api_deprecation",
+          "target_fact_key": "feature.admin_audit",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.backup_rpo",
+          "target_fact_key": "feature.api_keys",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.concurrent_requests",
+          "target_fact_key": "feature.batch_jobs",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.data_classification",
+          "target_fact_key": "feature.circuit_breaker",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.dependency_updates",
+          "target_fact_key": "feature.client_sdks",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.encryption_at_rest",
+          "target_fact_key": "feature.dead_letter",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.latency_budget",
+          "target_fact_key": "feature.graceful_degradation",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.log_retention",
+          "target_fact_key": "feature.health_aggregated",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.oncall_api",
+          "target_fact_key": "feature.ip_allowlist",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.payload_max",
+          "target_fact_key": "feature.openapi_diff",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.region_failover",
+          "target_fact_key": "feature.quota_service",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "constraint.synthetic_staging",
+          "target_fact_key": "feature.request_signing",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "decision.auth",
+          "target_fact_key": "stack.metrics_cardinality",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.breaking_changes",
+          "target_fact_key": "stack.runtime",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.cors",
+          "target_fact_key": "stack.secrets_k8s",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.error_format",
+          "target_fact_key": "stack.tls",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.idempotency",
+          "target_fact_key": "stack.tracing",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.pagination",
+          "target_fact_key": "stack.waf",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.rate_limits",
+          "target_fact_key": "stack.cache_api",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.synchronous_timeout",
+          "target_fact_key": "stack.db",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.versioning",
+          "target_fact_key": "stack.deploy",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "decision.webhook_signing",
+          "target_fact_key": "stack.docs_api",
+          "edge_type": "depends_on"
+        },
+        {
+          "source_fact_key": "deployment.blue_green",
+          "target_fact_key": "stack.gateway",
+          "edge_type": "deployed_with"
+        },
+        {
+          "source_fact_key": "deployment.canary_analysis",
+          "target_fact_key": "stack.iac",
+          "edge_type": "deployed_with"
+        },
+        {
+          "source_fact_key": "deployment.cost_cap",
+          "target_fact_key": "stack.logging_structured",
+          "edge_type": "deployed_with"
+        },
+        {
+          "source_fact_key": "deployment.migrations_job",
+          "target_fact_key": "stack.messaging",
+          "edge_type": "deployed_with"
+        },
+        {
+          "source_fact_key": "deployment.network_policy",
+          "target_fact_key": "stack.metrics_cardinality",
+          "edge_type": "deployed_with"
+        },
+        {
+          "source_fact_key": "feature.admin_audit",
+          "target_fact_key": "test.chaos",
+          "edge_type": "tested_by"
+        },
+        {
+          "source_fact_key": "feature.api_keys",
+          "target_fact_key": "test.contract_public",
+          "edge_type": "tested_by"
+        },
+        {
+          "source_fact_key": "feature.batch_jobs",
+          "target_fact_key": "test.fuzz_json",
+          "edge_type": "tested_by"
+        },
+        {
+          "source_fact_key": "feature.circuit_breaker",
+          "target_fact_key": "test.integration",
+          "edge_type": "tested_by"
+        },
+        {
+          "source_fact_key": "feature.client_sdks",
+          "target_fact_key": "test.load_gateway",
+          "edge_type": "tested_by"
+        },
+        {
+          "source_fact_key": "feature.dead_letter",
+          "target_fact_key": "test.mutation_api",
+          "edge_type": "tested_by"
+        },
+        {
+          "source_fact_key": "feature.graceful_degradation",
+          "target_fact_key": "test.tls_pinning",
+          "edge_type": "tested_by"
+        },
+        {
+          "source_fact_key": "feature.request_validation",
+          "target_fact_key": "decision.auth",
+          "edge_type": "implements"
+        },
+        {
+          "source_fact_key": "feature.retry_policy",
+          "target_fact_key": "decision.breaking_changes",
+          "edge_type": "implements"
+        },
+        {
+          "source_fact_key": "feature.schema_registry",
+          "target_fact_key": "decision.cors",
+          "edge_type": "implements"
+        },
+        {
+          "source_fact_key": "feature.shadow_mode",
+          "target_fact_key": "decision.error_format",
+          "edge_type": "implements"
+        },
+        {
+          "source_fact_key": "feature.traffic_split",
+          "target_fact_key": "decision.idempotency",
+          "edge_type": "implements"
+        },
+        {
+          "source_fact_key": "feature.usage_metering",
+          "target_fact_key": "decision.pagination",
+          "edge_type": "implements"
+        },
+        {
+          "source_fact_key": "migration.dual_write",
+          "target_fact_key": "stack.runtime",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "migration.monolith_split",
+          "target_fact_key": "stack.secrets_k8s",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "monitoring.alert_routing",
+          "target_fact_key": "stack.tls",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "monitoring.slo_api",
+          "target_fact_key": "stack.tracing",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "monitoring.synthetic",
+          "target_fact_key": "stack.waf",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "monitoring.trace_sampling",
+          "target_fact_key": "stack.cache_api",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "research.p3.baseline.3",
+          "target_fact_key": "api.admin.clients.list",
+          "edge_type": "related_to"
+        },
+        {
+          "source_fact_key": "research.p3.baseline.3",
+          "target_fact_key": "research.p3.edges.justification.3",
+          "edge_type": "related_to"
+        }
+      ]
+    }
+  ]
+}

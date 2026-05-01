@@ -1,0 +1,1 @@
+{"timestamp": "2026-04-03T04:46:27Z", "phase": 4, "checkpoint_type": "phase_start", "agent_id": "rdl_semantic_conflict_agent", "status": "in_progress", "notes": "Semantic-only conflict injections (c-sem-*), experiment_id=hoyer_0p25", "experiment": {"id": "hoyer_0p25", "hoyer_lambda": 0.25}}

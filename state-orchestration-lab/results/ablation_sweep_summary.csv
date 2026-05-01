@@ -1,0 +1,8 @@
+config,description,nli_model,bidirectional,margin,reverse_margin_relaxed,sparsecl_everify,sparsecl,predicate_gate,predicate_overlap_mode,total,conflicts,benign,TP,FP,FN,TN,precision,recall,f1,mean_latency_ms
+A_base_unidirectional,"Base model, unidirectional NLI, no margin, no SparseCL E-Verify, no predicate gate",cross-encoder/nli-deberta-v3-base,False,0.0,0.0,False,False,0.0,soft,66,40,26,36,22,4,4,0.6207,0.9,0.7347,3312.9
+B_base_bidirectional,"Base model, bidirectional NLI, no margin, no SparseCL E-Verify, no predicate gate",cross-encoder/nli-deberta-v3-base,True,0.0,0.0,False,False,0.0,soft,66,40,26,32,16,8,10,0.6667,0.8,0.7273,3698.0
+C_base_margin,"Base model, bidirectional + margin 0.40 (symmetric), no E-Verify, no predicate gate",cross-encoder/nli-deberta-v3-base,True,0.4,0.0,False,False,0.0,soft,66,40,26,32,16,8,10,0.6667,0.8,0.7273,3580.4
+D_base_predicate,"Base model, bidirectional + margin + soft predicate gate (0.15), no E-Verify",cross-encoder/nli-deberta-v3-base,True,0.4,0.0,False,False,0.15,soft,66,40,26,11,0,29,26,1.0,0.275,0.4314,965.9
+E_base_full,"Base model: bidirectional + margin + soft predicate + SparseCL rerank (E-Verify off, Apr 2026 preset)",cross-encoder/nli-deberta-v3-base,True,0.4,0.0,False,False,0.15,soft,66,40,26,11,0,29,26,1.0,0.275,0.4314,909.2
+F_wanli_full,"WANLI-tuned DeBERTa-v3-large + same stack as E (rerank, no E-Verify)",MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli,True,0.4,0.0,False,False,0.15,soft,66,40,26,11,0,29,26,1.0,0.275,0.4314,714.2
+G_wanli_relaxed,WANLI model + asymmetric reverse margin 0.25 when forward NLI is strong (forward margin stays 0.40),MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli,True,0.4,0.25,False,False,0.15,soft,66,40,26,11,0,29,26,1.0,0.275,0.4314,951.8

@@ -1,0 +1,1458 @@
+{
+  "skf_version": "1.2",
+  "exported_at": "2026-04-01T00:00:26Z",
+  "source": {
+    "agent": "paper3-basis-to-seed",
+    "basis_exported_at": "2026-03-31T23:57:32Z",
+    "basis_corpus_slug": "paper3_data_pipeline",
+    "paper3_experiment_id": "C"
+  },
+  "project": {
+    "name": "Research — Data Pipeline Platform",
+    "description": "Synthetic batch/stream data platform base corpus for Paper 3 (from basis export).",
+    "slug": "research-data-pipeline",
+    "tags": [
+      "research",
+      "paper3",
+      "data-pipeline"
+    ]
+  },
+  "facts": [
+    {
+      "key": "api.dbt.artifacts.fetch",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /dbt/v1/runs/{id}/artifacts — manifest and run results.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.dbt.jobs.trigger",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /dbt/v1/jobs/run — trigger job for tag or model subset.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.dev.sync.request",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /dev/v1/sync — request dev schema sync from prod (masked).",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.dev.sync.status",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /dev/v1/sync/{id} — sync job progress.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.ingest.kafka.publish",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "Internal: produce to validated topics with schema registry check.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.lineage.event",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /lineage/v1/events — ingest OpenLineage event batch.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.metadata.glossary",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /metadata/v1/glossary — business terms and linked columns.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.metadata.search",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /metadata/v1/search — search tables and columns by tag.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.monitoring.metrics",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /pipeline/v1/metrics/prometheus — internal metrics scrape.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.ops.backfill.approve",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /ops/v1/backfills — request approval workflow id.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.ops.backfill.status",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /ops/v1/backfills/{id} — approval and execution state.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.pipeline.costs.alloc",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /pipeline/v1/costs — allocation by DAG and task.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.pipeline.datasets.lineage",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /pipeline/v1/datasets/{id}/lineage — upstream/downstream.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.pipeline.datasets.register",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /pipeline/v1/datasets — register dataset metadata.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.pipeline.quality.report",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /pipeline/v1/quality/{run_id} — GE results summary.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.pipeline.runs.cancel",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /pipeline/v1/runs/{id}/cancel — cancel queued or running DAG run.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.pipeline.runs.status",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /pipeline/v1/runs/{id} — state, task instances, logs URI.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.pipeline.runs.trigger",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /pipeline/v1/runs — trigger DAG with conf JSON.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.security.audit_export",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /pipeline/v1/audit/export — export access logs for tenant.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.warehouse.query.cancel",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /warehouse/v1/query/{id}/cancel — cancel running query.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.warehouse.query.submit",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "POST /warehouse/v1/query — async query with warehouse selection.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "api.warehouse.tables.stats",
+      "layer": "product",
+      "category": "api_endpoint",
+      "value": "GET /warehouse/v1/tables/{name}/stats — row count, freshness.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.ad_hoc_cost",
+      "layer": "product",
+      "category": "constraint",
+      "value": "Ad hoc queries over USD 50 require analyst approval ticket.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.backup_warehouse",
+      "layer": "product",
+      "category": "constraint",
+      "value": "Weekly logical export of gold marts to immutable bucket.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.cross_dep",
+      "layer": "product",
+      "category": "constraint",
+      "value": "No circular dependencies between gold marts; enforced in manifest lint.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.dag_complexity",
+      "layer": "product",
+      "category": "constraint",
+      "value": "Max 200 tasks per DAG; split otherwise.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.data_minimization",
+      "layer": "product",
+      "category": "constraint",
+      "value": "Exports for ML limited to approved feature sets.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.dbt_runtime",
+      "layer": "product",
+      "category": "constraint",
+      "value": "No single dbt model > 2h runtime without incremental strategy.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.encryption_in_transit",
+      "layer": "product",
+      "category": "constraint",
+      "value": "TLS between all services; no plaintext JDBC.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.kafka_retention",
+      "layer": "product",
+      "category": "constraint",
+      "value": "Default topic retention 7d; extended only with approval.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.oncall_data",
+      "layer": "product",
+      "category": "constraint",
+      "value": "Data platform on-call 24/5; weekend only during freeze windows.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.pii_columns",
+      "layer": "product",
+      "category": "constraint",
+      "value": "All PII columns must have classification tag before merge to main.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.snowflake_credits",
+      "layer": "product",
+      "category": "constraint",
+      "value": "Monthly Snowflake credit budget; throttle heavy ad hoc queries.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "constraint.stream_schema",
+      "layer": "product",
+      "category": "constraint",
+      "value": "All Kafka producers must register schema before first publish.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.backfill_policy",
+      "layer": "product",
+      "category": "decision",
+      "value": "Backfills require ticket; max 90d window per run without arch review.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.idempotency_dag",
+      "layer": "product",
+      "category": "decision",
+      "value": "Airflow tasks use deterministic run_id + data interval for idempotency.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.lineage_pii",
+      "layer": "product",
+      "category": "decision",
+      "value": "PII columns must appear in lineage with masking policy reference.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.medallion",
+      "layer": "product",
+      "category": "decision",
+      "value": "Bronze raw, silver conformed, gold curated marts; no skips.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.partitioning",
+      "layer": "product",
+      "category": "decision",
+      "value": "Date partition on all large tables; cluster on tenant where applicable.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.pii_pipeline",
+      "layer": "product",
+      "category": "decision",
+      "value": "Tokenize PII in silver; only hashed keys in gold unless approved.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.retention_lake",
+      "layer": "product",
+      "category": "decision",
+      "value": "Bronze 2y; silver 5y; gold indefinite with legal hold support.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.schema_evolution",
+      "layer": "product",
+      "category": "decision",
+      "value": "Backward compatible Avro for Kafka; compatibility CI gate.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.sla_ingest",
+      "layer": "product",
+      "category": "decision",
+      "value": "Streaming lag p95 under 2 minutes; batch daily by 08:00 UTC.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "decision.test_env_isolation",
+      "layer": "product",
+      "category": "decision",
+      "value": "Prod data never lands in dev; synthetic or masked only.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "deployment.airflow_helm",
+      "layer": "product",
+      "category": "deployment",
+      "value": "Airflow deployed via official Helm chart; IRSA for S3 access.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "deployment.dbt_ci",
+      "layer": "product",
+      "category": "deployment",
+      "value": "dbt run --select state:modified+ in PR CI on clone warehouse.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "deployment.multi_az",
+      "layer": "product",
+      "category": "deployment",
+      "value": "Kafka and Airflow control plane multi-AZ; workers spread across AZs.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "deployment.read_replica_bi",
+      "layer": "product",
+      "category": "deployment",
+      "value": "BI tools pinned to read replica; no queries on primary.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "deployment.secrets_rotation",
+      "layer": "product",
+      "category": "deployment",
+      "value": "Quarterly rotation of warehouse service accounts.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.access_rbac",
+      "layer": "product",
+      "category": "feature",
+      "value": "Snowflake RBAC mapped from corporate IdP groups.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.anomaly_detection",
+      "layer": "product",
+      "category": "feature",
+      "value": "Statistical anomaly jobs on KPI streams; optional ML model.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.column_lineage",
+      "layer": "product",
+      "category": "feature",
+      "value": "Column-level lineage from dbt exposures to BI dashboards.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.cost_attribution",
+      "layer": "product",
+      "category": "feature",
+      "value": "Per-pipeline dollar cost estimates in lineage graph.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.cost_chargeback",
+      "layer": "product",
+      "category": "feature",
+      "value": "Monthly chargeback report per domain owner from warehouse tags.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.cross_region_copy",
+      "layer": "product",
+      "category": "feature",
+      "value": "Approved datasets replicated to EU bucket for GDPR analysis.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.daily_mart_refresh",
+      "layer": "product",
+      "category": "feature",
+      "value": "Nightly refresh of revenue and churn marts with data quality gates.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.data_contract",
+      "layer": "product",
+      "category": "feature",
+      "value": "YAML contracts for gold tables enforced in CI.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.dq_dashboard",
+      "layer": "product",
+      "category": "feature",
+      "value": "Single pane for failed expectations and blocking downstream.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.incremental_models",
+      "layer": "product",
+      "category": "feature",
+      "value": "dbt incremental models for large fact tables.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.orchestration_alerts",
+      "layer": "product",
+      "category": "feature",
+      "value": "Airflow SLA misses page data platform on-call.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.partition_pruning",
+      "layer": "product",
+      "category": "feature",
+      "value": "Query guardrails in BI tool to require partition filters.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.sample_pii",
+      "layer": "product",
+      "category": "feature",
+      "value": "Row-level sampling with PII redaction for analyst sandbox.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.seed_data",
+      "layer": "product",
+      "category": "feature",
+      "value": "Dev environments seeded from anonymized production sample.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.snapshot_scd2",
+      "layer": "product",
+      "category": "feature",
+      "value": "Type-2 SCD snapshots for slowly changing dimensions.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.streaming_agg",
+      "layer": "product",
+      "category": "feature",
+      "value": "15-minute rolling aggregates for funnel metrics.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "feature.time_travel",
+      "layer": "product",
+      "category": "feature",
+      "value": "Snowflake time travel 7d for operational recovery drills.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "migration.kafka_cluster",
+      "layer": "product",
+      "category": "migration",
+      "value": "Dual-write to new cluster for 2 weeks; consumer offset validation.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "migration.legacy_oracle",
+      "layer": "product",
+      "category": "migration",
+      "value": "Oracle EDW sunset; parallel run 60d with reconciliation reports.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "monitoring.cost_anomaly",
+      "layer": "product",
+      "category": "monitoring",
+      "value": "Detect spend spikes vs 4-week rolling average.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "monitoring.dag_duration_trend",
+      "layer": "product",
+      "category": "monitoring",
+      "value": "Week-over-week DAG duration anomaly detection.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "monitoring.data_freshness",
+      "layer": "product",
+      "category": "monitoring",
+      "value": "Freshness checks on gold tables; page if > 1h late.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "monitoring.kafka_lag",
+      "layer": "product",
+      "category": "monitoring",
+      "value": "Consumer lag alerts with topic-level thresholds.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.catalog_glue",
+      "layer": "product",
+      "category": "stack",
+      "value": "Glue Data Catalog as secondary; Snowflake external tables for curated zones.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.compute_spark",
+      "layer": "product",
+      "category": "stack",
+      "value": "EMR on-demand for large backfills; auto-terminate idle.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.cost",
+      "layer": "product",
+      "category": "stack",
+      "value": "Cloudability dashboards; chargeback tags per cost center.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.elt_tool",
+      "layer": "product",
+      "category": "stack",
+      "value": "Fivetran for Salesforce and Postgres CDC mirrors (read replicas).",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.iceberg",
+      "layer": "product",
+      "category": "stack",
+      "value": "Iceberg tables on S3 for near-real-time marts; Athena for ad hoc.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.ingest_batch",
+      "layer": "product",
+      "category": "stack",
+      "value": "S3 landing zone; AWS Glue crawlers for schema inference.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.ingest_stream",
+      "layer": "product",
+      "category": "stack",
+      "value": "Kafka cluster (MSK) for clickstream and product events.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.lineage",
+      "layer": "product",
+      "category": "stack",
+      "value": "OpenLineage events from Airflow and dbt; Marquez UI.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.metadata",
+      "layer": "product",
+      "category": "stack",
+      "value": "DataHub for glossary, ownership, and PII tags.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.orchestration",
+      "layer": "product",
+      "category": "stack",
+      "value": "Apache Airflow 3 on Kubernetes; CeleryExecutor for heavy tasks.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.quality",
+      "layer": "product",
+      "category": "stack",
+      "value": "Great Expectations checkpoints on critical marts; alerts to Slack.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.schedule_sla",
+      "layer": "product",
+      "category": "stack",
+      "value": "Airflow SLA sensors on gold marts with downstream pause.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.transform",
+      "layer": "product",
+      "category": "stack",
+      "value": "dbt Core in CI; dbt Cloud for scheduling prod models.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "stack.warehouse",
+      "layer": "product",
+      "category": "stack",
+      "value": "Snowflake shared database; separate dev/test warehouses.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "test.data_privacy",
+      "layer": "product",
+      "category": "test",
+      "value": "Automated scan for unexpected PII patterns in bronze.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "test.dbt_unit",
+      "layer": "product",
+      "category": "test",
+      "value": "dbt unit tests for critical business logic macros.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "test.disaster_recovery",
+      "layer": "product",
+      "category": "test",
+      "value": "Quarterly restore test from backup to isolated account.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "test.lineage_completeness",
+      "layer": "product",
+      "category": "test",
+      "value": "Nightly job asserts OpenLineage coverage > 95% for gold.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "test.pipeline_smoke",
+      "layer": "product",
+      "category": "test",
+      "value": "Post-deploy smoke DAG validating row counts vs baseline.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "test.reconciliation_core",
+      "layer": "product",
+      "category": "test",
+      "value": "Daily reconciliation between source totals and gold fact tables.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    },
+    {
+      "key": "test.schema_drift",
+      "layer": "product",
+      "category": "test",
+      "value": "Automated compare between landed and expected schemas.",
+      "confidence": 0.9,
+      "references": [],
+      "metadata": {},
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null
+    }
+  ],
+  "edges": [
+    {
+      "from": "api.dbt.artifacts.fetch",
+      "to": "stack.transform",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.dbt.jobs.trigger",
+      "to": "stack.transform",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.dev.sync.request",
+      "to": "stack.warehouse",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.dev.sync.status",
+      "to": "stack.warehouse",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.ingest.kafka.publish",
+      "to": "stack.ingest_batch",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.lineage.event",
+      "to": "stack.lineage",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.metadata.glossary",
+      "to": "stack.metadata",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.metadata.search",
+      "to": "stack.metadata",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.monitoring.metrics",
+      "to": "stack.orchestration",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.ops.backfill.approve",
+      "to": "stack.orchestration",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.ops.backfill.status",
+      "to": "stack.orchestration",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.pipeline.costs.alloc",
+      "to": "stack.orchestration",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.pipeline.datasets.lineage",
+      "to": "stack.lineage",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.pipeline.datasets.register",
+      "to": "stack.orchestration",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.pipeline.quality.report",
+      "to": "stack.catalog_glue",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "api.pipeline.runs.cancel",
+      "to": "stack.compute_spark",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "api.pipeline.runs.status",
+      "to": "stack.cost",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "api.pipeline.runs.trigger",
+      "to": "stack.elt_tool",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "api.security.audit_export",
+      "to": "stack.metadata",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.warehouse.query.cancel",
+      "to": "stack.warehouse",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.warehouse.query.submit",
+      "to": "stack.warehouse",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "api.warehouse.tables.stats",
+      "to": "stack.warehouse",
+      "type": "communicates_with",
+      "description": ""
+    },
+    {
+      "from": "constraint.ad_hoc_cost",
+      "to": "feature.access_rbac",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.backup_warehouse",
+      "to": "feature.anomaly_detection",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.cross_dep",
+      "to": "feature.column_lineage",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.dag_complexity",
+      "to": "feature.cost_attribution",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.data_minimization",
+      "to": "feature.cost_chargeback",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.dbt_runtime",
+      "to": "feature.cross_region_copy",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.encryption_in_transit",
+      "to": "feature.daily_mart_refresh",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.kafka_retention",
+      "to": "feature.data_contract",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.oncall_data",
+      "to": "feature.dq_dashboard",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.pii_columns",
+      "to": "feature.incremental_models",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.snowflake_credits",
+      "to": "feature.orchestration_alerts",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "constraint.stream_schema",
+      "to": "feature.partition_pruning",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "decision.backfill_policy",
+      "to": "stack.iceberg",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.idempotency_dag",
+      "to": "stack.ingest_stream",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.lineage_pii",
+      "to": "stack.lineage",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.medallion",
+      "to": "stack.quality",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.partitioning",
+      "to": "stack.schedule_sla",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.pii_pipeline",
+      "to": "stack.catalog_glue",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "decision.retention_lake",
+      "to": "stack.compute_spark",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.schema_evolution",
+      "to": "stack.cost",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.sla_ingest",
+      "to": "stack.ingest_batch",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "decision.test_env_isolation",
+      "to": "stack.elt_tool",
+      "type": "depends_on",
+      "description": ""
+    },
+    {
+      "from": "deployment.airflow_helm",
+      "to": "stack.iceberg",
+      "type": "deployed_with",
+      "description": ""
+    },
+    {
+      "from": "deployment.dbt_ci",
+      "to": "stack.ingest_stream",
+      "type": "deployed_with",
+      "description": ""
+    },
+    {
+      "from": "deployment.multi_az",
+      "to": "stack.quality",
+      "type": "deployed_with",
+      "description": ""
+    },
+    {
+      "from": "deployment.read_replica_bi",
+      "to": "stack.schedule_sla",
+      "type": "deployed_with",
+      "description": ""
+    },
+    {
+      "from": "deployment.secrets_rotation",
+      "to": "stack.catalog_glue",
+      "type": "deployed_with",
+      "description": ""
+    },
+    {
+      "from": "feature.access_rbac",
+      "to": "test.data_privacy",
+      "type": "tested_by",
+      "description": ""
+    },
+    {
+      "from": "feature.anomaly_detection",
+      "to": "test.dbt_unit",
+      "type": "tested_by",
+      "description": ""
+    },
+    {
+      "from": "feature.column_lineage",
+      "to": "test.disaster_recovery",
+      "type": "tested_by",
+      "description": ""
+    },
+    {
+      "from": "feature.cost_attribution",
+      "to": "test.lineage_completeness",
+      "type": "tested_by",
+      "description": ""
+    },
+    {
+      "from": "feature.cost_chargeback",
+      "to": "test.pipeline_smoke",
+      "type": "tested_by",
+      "description": ""
+    },
+    {
+      "from": "feature.cross_region_copy",
+      "to": "test.reconciliation_core",
+      "type": "tested_by",
+      "description": ""
+    },
+    {
+      "from": "feature.daily_mart_refresh",
+      "to": "test.schema_drift",
+      "type": "tested_by",
+      "description": ""
+    },
+    {
+      "from": "feature.sample_pii",
+      "to": "decision.backfill_policy",
+      "type": "implements",
+      "description": ""
+    },
+    {
+      "from": "feature.seed_data",
+      "to": "decision.idempotency_dag",
+      "type": "implements",
+      "description": ""
+    },
+    {
+      "from": "feature.snapshot_scd2",
+      "to": "decision.lineage_pii",
+      "type": "implements",
+      "description": ""
+    },
+    {
+      "from": "feature.streaming_agg",
+      "to": "decision.medallion",
+      "type": "implements",
+      "description": ""
+    },
+    {
+      "from": "feature.time_travel",
+      "to": "decision.partitioning",
+      "type": "implements",
+      "description": ""
+    },
+    {
+      "from": "migration.kafka_cluster",
+      "to": "stack.compute_spark",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "migration.legacy_oracle",
+      "to": "stack.cost",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "monitoring.cost_anomaly",
+      "to": "stack.elt_tool",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "monitoring.dag_duration_trend",
+      "to": "stack.iceberg",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "monitoring.data_freshness",
+      "to": "stack.ingest_batch",
+      "type": "related_to",
+      "description": ""
+    },
+    {
+      "from": "monitoring.kafka_lag",
+      "to": "stack.ingest_stream",
+      "type": "related_to",
+      "description": ""
+    }
+  ],
+  "episodes": [
+    {
+      "type": "extraction",
+      "actor": "paper3-basis-to-seed",
+      "content": "Paper 3 data pipeline seed generated from paper3_basis.skf.json",
+      "timestamp": "2026-04-01T00:00:26Z"
+    }
+  ],
+  "rules": []
+}

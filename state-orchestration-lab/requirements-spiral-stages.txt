@@ -1,0 +1,6 @@
+# Spiral-aligned semantic pipeline (SparseCL + NLI). Install from state-orchestration-lab/:
+#   pip install -r requirements.txt -r requirements-spiral-stages.txt
+pydantic-settings>=2.0
+numpy>=1.24.0
+sentence-transformers>=3.0.0
+torch>=2.1.0

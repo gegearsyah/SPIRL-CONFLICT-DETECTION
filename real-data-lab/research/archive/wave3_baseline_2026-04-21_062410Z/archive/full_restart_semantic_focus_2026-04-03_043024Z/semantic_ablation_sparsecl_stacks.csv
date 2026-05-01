@@ -1,0 +1,4 @@
+stack,embed_sim_threshold,nli_contra_threshold,sparsity_floor,high_severity_sim,sparsecl_alpha,sparsecl_everify,nli_predicate_overlap_threshold,nli_bidirectional_enabled,nli_margin_threshold,TP,FN,FP,TN,precision_pct,recall_pct,specificity_pct,npv_pct,accuracy_pct,f1_pct,fpr_pct,fnr_pct
+no_stage15,0.58,0.94,0.2,0.82,1.0,True,0.15,True,0.4,11,29,0,26,100.00,27.50,100.00,47.27,56.06,43.14,0.00,72.50
+sparsecl_everify_on,0.58,0.94,0.2,0.82,1.0,True,0.15,True,0.4,11,29,0,26,100.00,27.50,100.00,47.27,56.06,43.14,0.00,72.50
+sparsecl_rerank_only,0.58,0.94,0.2,0.82,1.0,False,0.15,True,0.4,11,29,0,26,100.00,27.50,100.00,47.27,56.06,43.14,0.00,72.50

@@ -1,0 +1,8 @@
+{
+  "_source": "research/archive/full_redo_from_import_2026-04-15_180344Z/real_data_lab_confusion_matrix.md",
+  "_note": "Aggregate counts recovered from the confusion matrix file because the paired execution_log.jsonl in that archive was truncated to 6 rows. The paper's claim that Wave 3 temporal recall is 0.65 does not reconcile with this archive's matrix (15/20 = 0.75). The R4 RDL replay will provide a fully paired Wave 3 log and this file can then be regenerated for real McNemar.",
+  "temporal_invalidation": [15, 20],
+  "constraint_violation": [19, 20],
+  "dependency_impact": [14, 20],
+  "semantic_contradiction": [28, 40]
+}

@@ -4,6 +4,28 @@ Sibling layout to [`../real-data-lab/`](../real-data-lab/): prompts, append-only
 
 **Shorthand:** **TAL** = Trusted ADR Lab (`trusted-adr-lab/`).
 
+For the paper claim map, start at [`../PAPER_RESULTS_GUIDE.md`](../PAPER_RESULTS_GUIDE.md).
+
+## Paper-facing status
+
+TAL is a small out-of-distribution ADR probe: 18 rows total (8 typed conflicts, 4 ambiguous rows, 6 benign rows). It has no dependency-edge substrate, so `dependency_impact` is `n/a`.
+
+The paper's TAL table should be checked against the main paper TAL paragraph, the raw execution log, and the materialized row files here:
+
+| Artifact | Role |
+| --- | --- |
+| [`research/trusted_adr_lab_execution_log.jsonl`](research/trusted_adr_lab_execution_log.jsonl) | Raw TAL execution log. |
+| [`research/trusted_adr/trusted_*_rows.jsonl`](research/trusted_adr/) | Materialized TAL row data with source paths/sections. |
+| [`research/trusted_adr_lab_confusion_matrix.md`](research/trusted_adr_lab_confusion_matrix.md) | Generated confusion matrix companion. |
+| [`research/trusted_adr_lab_mixed_report.md`](research/trusted_adr_lab_mixed_report.md) | Generated pipeline report; useful, but not canonical if it disagrees with the main paper text and raw execution log. |
+
+Known paper-facing interpretation:
+
+- TAL binary F1 is lower than RDL; this is reported as a portability stress test, not as parity.
+- Three benign TAL rows route to `needs_review`; strict scoring counts them as false positives, while abstention-aware scoring treats them as deferrals rather than typed commits.
+- One of four ambiguous TAL rows routes to `needs_review`; three under-route to `benign`.
+- No ambiguous TAL row is forced into a committed typed conflict label.
+
 ### How to tell the agent (same idea as “run RDL E2E”)
 
 Use any of these; they mean the same pipeline:

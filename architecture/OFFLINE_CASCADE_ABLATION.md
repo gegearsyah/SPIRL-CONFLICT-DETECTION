@@ -34,7 +34,11 @@ reported slice. We therefore do *not* claim that SparseCL or the WANLI-tuned
 encoder are useless in general; only that they do not overcome the
 gate-dominated bottleneck in this saved harness result.
 
-**Headline takeaway.** The gap between the best offline F1 (0.735,
-Config A) and the live mixed-workload F1 (0.9818) isolates the live Stage 5
-judge's contribution: the cascade shape and NLI gates alone are
-insufficient, and the deployed LLM judge is load-bearing.
+**Headline takeaway.** This slice is best read as a semantic-first proxy, not
+as a direct Semantic Commit reproduction. Config A recovers most semantic
+contradictions (36/40) but over-alerts on benign semantic controls (22/26
+false positives). Predicate-gated configs remove those benign false positives
+but detect only 11/40 contradictions. The result supports the paper's
+necessity claim: binary semantic alerting alone faces a sharp precision-recall
+tradeoff and does not provide typed remediation routing for temporal,
+constraint, or dependency writes.

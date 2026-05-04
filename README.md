@@ -1,8 +1,29 @@
 # Beyond Temporal Contradiction — research artifacts (publication bundle)
 
-Self-contained slice of the **SPIRAL-RESEARCH** monorepo intended to become its **own GitHub repository**: Real Data Lab (RDL), Trusted ADR Lab (TAL), Paper~3 / Experiment~D research harness, offline cascade **state-orchestration-lab**, and all **Python / PowerShell** drivers we used to score runs.
+Self-contained publication bundle for the paper artifacts: Real Data Lab (RDL), Trusted ADR Lab (TAL), Paper~3 / Experiment~D research harness, offline cascade **state-orchestration-lab**, and all **Python / PowerShell** drivers used to score runs.
 
-This is **not** the full Spirl product (no `backend/` FastAPI tree here). Pair this repo with the paper and your own Spirl-compatible API + knowledge graph to replicate the *methodology*; swap in your project UUIDs and corpus.
+This is **not** the full Spirl product (no `backend/` FastAPI tree here). Pair this bundle with the paper and a Spirl-compatible API + knowledge graph to replicate the *methodology*; swap in local project UUIDs and corpus.
+
+> **Double-blind review note:** before submission, host or package this bundle through an anonymized archive/repository and remove any project paths, credentials, organization names, or deployment URLs that could identify the authors.
+
+---
+
+## If you are reading the paper
+
+Start with [`PAPER_RESULTS_GUIDE.md`](PAPER_RESULTS_GUIDE.md). It maps each paper claim to the canonical report, raw log, and corpus file that supports it.
+
+Short version:
+
+| Question | Start here |
+|----------|------------|
+| Which files support the paper's headline RDL numbers? | [`PAPER_RESULTS_GUIDE.md`](PAPER_RESULTS_GUIDE.md#paper-claim-ledger) |
+| What is the canonical RDL mixed workload report? | [`real-data-lab/research/real_data_lab_mixed_report.md`](real-data-lab/research/real_data_lab_mixed_report.md) |
+| Where are the RDL Wilson confidence intervals? | [`real-data-lab/research/wave4_confidence_intervals_v3b.md`](real-data-lab/research/wave4_confidence_intervals_v3b.md) |
+| Which TAL files should I trust for the paper table? | [`PAPER_RESULTS_GUIDE.md`](PAPER_RESULTS_GUIDE.md#trusted-adr-lab-tal) and [`trusted-adr-lab/research/trusted_adr_lab_execution_log.jsonl`](trusted-adr-lab/research/trusted_adr_lab_execution_log.jsonl) |
+| Where is threshold/leakage provenance? | [`real-data-lab/research/wave4_constants_provenance.md`](real-data-lab/research/wave4_constants_provenance.md) |
+| What is live backend vs offline lab? | [`architecture/README.md`](architecture/README.md) |
+
+Some generated reports are historical or use a different aggregation convention. The guide marks the canonical artifacts used for the paper claims.
 
 ---
 
@@ -10,6 +31,7 @@ This is **not** the full Spirl product (no `backend/` FastAPI tree here). Pair t
 
 | Path | Purpose |
 |------|--------|
+| [`PAPER_RESULTS_GUIDE.md`](PAPER_RESULTS_GUIDE.md) | Claim-to-artifact map for the paper results, raw logs, and data files |
 | [`architecture/`](architecture/README.md) | How the offline ablation maps to the cascade; link to Appendix~G narrative + provenance doc |
 | [`state-orchestration-lab/`](state-orchestration-lab/README.md) | **Portable** Neo4j-oriented cascade + ablation sweep + log replay |
 | [`real-data-lab/`](real-data-lab/) | RDL lists, prompts, **all shipped execution logs / reports / `research/archive/` snapshots** |
@@ -70,4 +92,4 @@ This bundle is a **faithful export** of what lived under `Beyond Temporal Contra
 
 ## Citation
 
-Point readers to your EMNLP / arXiv paper and cite this repository for artifacts and reproduction scripts.
+Point readers to the EMNLP / arXiv paper and cite the anonymized artifact bundle for artifacts and reproduction scripts.

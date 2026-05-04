@@ -105,7 +105,7 @@ Total expected wall clock ~5 h with the patched benign runner, down from ~14.5 h
 If the replay cannot be completed before the EMNLP submission deadline, the paper already supports a honest fallback:
 
 - §Limitations discloses the logger gap
-- Appendix E §E.6 footnotes the TAL-sourced governance metrics
-- Appendix F (R6) shows per-row TAL governance decisions directly
+- The main paper now summarizes TAL governance metrics directly
+- TAL per-row governance decisions are available in the raw TAL execution log and row materialization
 
 The paper is not hard-blocked on R4, but the replay removes the E.6 caveat and lets the abstract headline a single-corpus `unsafe_forced_type_rate=0` claim rather than a cross-corpus one.

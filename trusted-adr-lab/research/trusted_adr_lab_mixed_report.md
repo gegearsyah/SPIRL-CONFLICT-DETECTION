@@ -2,6 +2,8 @@
 Generated: 2026-04-24T20:17:51Z
 Project: `7b2e5807-a910-4b18-bd8d-f52f310dd51d`
 
+> **Reader note:** this is a generated pipeline report. For the paper-facing TAL numbers, use the main paper TAL paragraph and the artifact map in [`../../PAPER_RESULTS_GUIDE.md`](../../PAPER_RESULTS_GUIDE.md) together with the raw execution log [`trusted_adr_lab_execution_log.jsonl`](trusted_adr_lab_execution_log.jsonl). If this generated summary disagrees with the main paper text and raw log, treat the main paper text/raw log pair as canonical for the paper table.
+
 ## Workload
 - Typed conflict rows: **8** (semantic=4, constraint=2, temporal=2)
 - Ambiguity rows: **4**
